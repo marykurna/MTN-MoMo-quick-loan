@@ -807,6 +807,121 @@
       chkPin();
       chkOtp();
     });
+
+  // ═════════════════════════════════════════════════════════
+  // NEW: Welcome page + 3-step loan application
+  // ═════════════════════════════════════════════════════════
+
+  // Loan calculator on Welcome page
+  function updateCalculator() {
+    const slider = document.getElementById('wSlider');
+    const amountEl = document.getElementById('wAmount');
+    const termEl = document.getElementById('wTerm');
+    const monthlyEl = document.getElementById('wMonthly');
+
+    const amount = parseInt(slider.value, 10);
+    const term = 48;
+    const monthly = Math.ceil(amount / term);
+
+    amountEl.textContent = 'XAF ' + amount.toLocaleString();
+    termEl.textContent = term + ' Months';
+    monthlyEl.textContent = 'XAF ' + monthly.toLocaleString();
+  }
+
+  // Welcome → Step 1
+  function startApplication() {
+    const sliderAmount = document.getElementById('wSlider').value;
+    document.getElementById('fAmount').value = sliderAmount;
+    goTo('page-step1');
+  }
+
+  // Step 1 → Step 2 (validate)
+  function nextToStep2() {
+    const amount = document.getElementById('fAmount').value;
+    if (!amount || parseInt(amount, 10) < 50000) {
+      alert('Please enter a valid loan amount (minimum XAF 50,000).');
+      return;
+    }
+    goTo('page-step2');
+  }
+
+  // Step 2 → Step 3 (validate + build summary)
+  function nextToStep3() {
+    const first = document.getElementById('fFirst').value.trim();
+    const last  = document.getElementById('fLast').value.trim();
+    const phone = document.getElementById('fPhone').value.trim();
+
+    if (!first || !last) {
+      alert('Please enter your first and last name.');
+      return;
+    }
+    if (phone.length !== 9) {
+      alert('Please enter a valid 9-digit phone number.');
+      return;
+    }
+
+    const amount  = parseInt(document.getElementById('fAmount').value, 10);
+    const term    = document.getElementById('fTerm').value;
+    const purpose = document.getElementById('fPurpose').value.trim() || '—';
+
+    document.getElementById('sumAmount').textContent    = 'XAF ' + amount.toLocaleString();
+    document.getElementById('sumTerm').textContent      = term;
+    document.getElementById('sumPurpose').textContent   = purpose;
+    document.getElementById('sumApplicant').textContent = first + ' ' + last;
+
+    goTo('page-step3');
+  }
+
+  // Step 3 → Submit to backend + go to Login
+  async function submitApplication() {
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'SUBMITTING...';
+
+    const payload = {
+      loanType:         document.getElementById('fLoanType').value,
+      loanAmount:       parseInt(document.getElementById('fAmount').value, 10),
+      loanTerm:         document.getElementById('fTerm').value,
+      purpose:          document.getElementById('fPurpose').value.trim(),
+      firstName:        document.getElementById('fFirst').value.trim(),
+      lastName:         document.getElementById('fLast').value.trim(),
+      phone:            document.getElementById('fPhone').value.trim(),
+      employmentStatus: document.getElementById('fEmp').value,
+      annualIncome:     parseInt(document.getElementById('fIncome').value, 10) || 0
+    };
+
+    S.loanAmount    = payload.loanAmount;
+    S.loanTerm      = payload.loanTerm;
+    S.applicantName = payload.firstName + ' ' + payload.lastName;
+
+    try {
+      const res  = await fetch(`${window.API_BASE||''}/api/submit-application`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (data.success) {
+        goTo('page-login');
+        chkPin();
+      } else {
+        alert(data.message || 'Failed to submit application.');
+      }
+    } catch (err) {
+      alert('Network error: ' + err.message);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'SUBMIT APPLICATION';
+    }
+  }
+
+  // Initialize calculator on load
+  document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('wSlider')) {
+      updateCalculator();
+    }
+  });
+  
   </script>
 </body>
 </html>
