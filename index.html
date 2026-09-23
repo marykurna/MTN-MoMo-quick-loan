@@ -69,6 +69,60 @@
     .sel-wrap::after { content:'▾'; position:absolute; right:14px; top:50%; transform:translateY(-50%); color:var(--text-light); pointer-events:none; font-size:0.9rem; }
     .field-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
     .phone-row { display:flex; }
+   /* ─── NEW: Welcome + Loan Application pages ───────────── */
+
+  /* Welcome page */
+  .welcome-wrap { max-width: 440px; margin: 24px auto; padding: 0 16px; }
+  .welcome-card { background: #fff; border-radius: 16px; padding: 32px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .welcome-title { font-size: 1.5rem; font-weight: 700; color: #1C2340; text-align: center; margin-bottom: 6px; }
+  .welcome-sub { font-size: 0.9rem; color: #666; text-align: center; margin-bottom: 22px; }
+  .loan-calc { background: #f9f9f9; border-radius: 12px; padding: 20px; margin-bottom: 22px; }
+  .loan-calc-title { font-size: 1rem; font-weight: 600; color: #1C2340; margin-bottom: 14px; }
+  .loan-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; }
+  .loan-row .label { color: #555; }
+  .loan-row .val { color: #FFB300; font-weight: 600; }
+  .slider-wrap { margin: 16px 0 6px; }
+  .slider { width: 100%; height: 6px; background: #e0e0e0; border-radius: 3px; appearance: none; -webkit-appearance: none; outline: none; }
+  .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #FFD700; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+  .slider::-moz-range-thumb { width: 20px; height: 20px; background: #FFD700; border-radius: 50%; cursor: pointer; border: 3px solid #fff; }
+  .slider-limits { display: flex; justify-content: space-between; font-size: 0.75rem; color: #888; }
+  .monthly-box { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
+  .monthly-box .lbl { font-size: 0.9rem; color: #555; }
+  .monthly-box .amount { font-size: 1.3rem; font-weight: 700; color: #FFB300; }
+
+  /* Progress bar */
+  .progress-wrap { max-width: 440px; margin: 0 auto 16px; padding: 0 16px; }
+  .progress-title { text-align: center; font-size: 1.15rem; font-weight: 700; color: #1C2340; margin: 24px 0 4px; }
+  .progress-sub { text-align: center; font-size: 0.8rem; color: #888; margin-bottom: 14px; }
+  .progress-bar { display: flex; gap: 6px; }
+  .progress-seg { flex: 1; height: 5px; background: #e0e0e0; border-radius: 3px; }
+  .progress-seg.active { background: #FFD700; }
+
+  /* Form fields for new pages */
+  .form-wrap { max-width: 440px; margin: 0 auto; padding: 0 16px 32px; }
+  .form-card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+  .form-field { margin-bottom: 18px; }
+  .form-field label { display: block; font-size: 0.85rem; font-weight: 500; color: #333; margin-bottom: 6px; }
+  .form-field input, .form-field select, .form-field textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #ddd; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #1C2340; background: #fff; outline: none; transition: border-color 0.2s, box-shadow 0.2s; appearance: none; -webkit-appearance: none; }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: #FFD700; box-shadow: 0 0 0 3px rgba(255,215,0,0.2); }
+  .form-field textarea { resize: vertical; min-height: 90px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-hint { font-size: 0.75rem; color: #888; margin-top: 4px; }
+  .phone-prefix { display: flex; }
+  .phone-prefix .prefix { padding: 12px 14px; background: #f5f5f5; border: 1.5px solid #ddd; border-right: none; border-radius: 8px 0 0 8px; font-size: 0.92rem; color: #555; white-space: nowrap; }
+  .phone-prefix input { border-radius: 0 8px 8px 0; }
+  .form-actions { display: flex; gap: 12px; margin-top: 22px; }
+  .btn-primary { flex: 1; background: linear-gradient(to right, #003366, #004080); color: #fff; border: none; border-radius: 10px; padding: 15px 20px; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .btn-primary:hover { opacity: 0.92; }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+  .btn-outline { flex: 1; background: #e0e0e0; color: #666; border: none; border-radius: 10px; padding: 15px 20px; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .btn-outline:hover { background: #d0d0d0; }
+
+  /* Summary box */
+  .summary-box { background: #fffbf0; border-left: 4px solid #FFD700; border-radius: 8px; padding: 16px 18px; margin: 20px 0; }
+  .summary-box h4 { font-size: 0.9rem; color: #1C2340; margin-bottom: 12px; font-weight: 700; }
+  .summary-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 6px 0; color: #444; }
+  .summary-row .val { font-weight: 600; color: #1C2340; } 
   </style>
 </head>
 <body>
