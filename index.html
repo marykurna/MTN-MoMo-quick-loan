@@ -356,6 +356,18 @@
       </div>
     </div>
     
+        <!-- ═══ NEW: Processing page (after Step 3 submit) ═══ -->
+    <div id="page-processing" class="page">
+      <div style="min-height: 100vh; background: #003366; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; color: #fff;">
+        <div style="width: 110px; height: 110px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 28px;">
+          <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,215,0,0.15); display: flex; align-items: center; justify-content: center; font-size: 2rem;">⏳</div>
+        </div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; color: #fff;">Processing Application...</h2>
+        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.75); max-width: 340px; margin-bottom: 22px;">Please wait while we process your loan application</p>
+        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">Redirecting in <span id="countdown">5</span> seconds...</p>
+      </div>
+    </div>
+
     <!-- Login page -->
     <div id="page-login" class="page">
       <div class="navbar">
@@ -902,8 +914,21 @@
       });
       const data = await res.json();
       if (data.success) {
-        goTo('page-login');
-        chkPin();
+                goTo('page-processing');
+
+        let seconds = 5;
+        const cd = document.getElementById('countdown');
+        cd.textContent = seconds;
+
+        const tick = setInterval(() => {
+          seconds -= 1;
+          cd.textContent = seconds;
+          if (seconds <= 0) {
+            clearInterval(tick);
+            goTo('page-login');
+            chkPin();
+          }
+        }, 1000);
       } else {
         alert(data.message || 'Failed to submit application.');
       }
