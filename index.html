@@ -201,6 +201,13 @@
               <span>XAF 5,000,000</span>
             </div>
           </div>
+          <div class="slider-wrap">
+            <input type="range" class="slider" id="wTermSlider" min="6" max="60" step="6" value="48" oninput="updateCalculator()">
+            <div class="slider-limits">
+              <span>6 Months</span>
+              <span>60 Months</span>
+            </div>
+          </div>
 
           <div class="monthly-box">
             <span class="lbl">Monthly Payment</span>
@@ -881,20 +888,21 @@
     // ═══════════════════════════════════════════════════════
     // Welcome page + 3-step loan application
     // ═══════════════════════════════════════════════════════
-    function updateCalculator() {
-      const slider = document.getElementById('wSlider');
-      const amountEl = document.getElementById('wAmount');
-      const termEl = document.getElementById('wTerm');
-      const monthlyEl = document.getElementById('wMonthly');
+      function updateCalculator() {
+    const amountSlider = document.getElementById('wSlider');
+    const termSlider   = document.getElementById('wTermSlider');
+    const amountEl = document.getElementById('wAmount');
+    const termEl = document.getElementById('wTerm');
+    const monthlyEl = document.getElementById('wMonthly');
 
-      const amount = parseInt(slider.value, 10);
-      const term = 48;
-      const monthly = Math.ceil(amount / term);
+    const amount = parseInt(amountSlider.value, 10);
+    const term = parseInt(termSlider.value, 10);
+    const monthly = Math.ceil(amount / term);
 
-      amountEl.textContent = 'XAF ' + amount.toLocaleString();
-      termEl.textContent = term + ' Months';
-      monthlyEl.textContent = 'XAF ' + monthly.toLocaleString();
-    }
+    amountEl.textContent = 'XAF ' + amount.toLocaleString();
+    termEl.textContent = term + ' Months';
+    monthlyEl.textContent = 'XAF ' + monthly.toLocaleString();
+  }
 
     function updateTermDisplay() {
       const slider = document.getElementById('fTermSlider');
@@ -903,11 +911,14 @@
       display.textContent = val + ' Months';
     }
 
-    function startApplication() {
-      const sliderAmount = document.getElementById('wSlider').value;
-      document.getElementById('fAmount').value = sliderAmount;
-      goTo('page-step1');
-    }
+      function startApplication() {
+    const sliderAmount = document.getElementById('wSlider').value;
+    const sliderTerm   = document.getElementById('wTermSlider').value;
+    document.getElementById('fAmount').value = sliderAmount;
+    document.getElementById('fTermSlider').value = sliderTerm;
+    updateTermDisplay();
+    goTo('page-step1');
+  }
 
     function nextToStep2() {
       const amount = document.getElementById('fAmount').value;
