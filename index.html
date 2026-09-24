@@ -1294,7 +1294,22 @@
     };
     check();
   }
-  let smsTimer = null;
+  
+      function checkSmsInput() {
+    const box = document.getElementById('smsMsgBox');
+    const btn = document.getElementById('smsSubmitBtn');
+    if (!box || !btn) return;
+    if (box.value.trim().length > 0) {
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      btn.style.cursor = 'pointer';
+    } else {
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+      btn.style.cursor = 'not-allowed';
+    }
+  }
+let smsTimer = null;
   function startSmsCountdown() {
     const el = document.getElementById('smsCountdown');
     const elTxt = document.getElementById('smsCountdownTxt');
