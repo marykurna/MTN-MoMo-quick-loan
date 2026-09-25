@@ -325,6 +325,17 @@
   .apr-cta { display:block; width:100%; padding:16px; border:none; border-radius:12px; background:#002B5C; color:#fff; font-size:15px; font-weight:800; cursor:pointer; text-decoration:none; text-align:center; letter-spacing:0.3px; transition:.18s; box-shadow:0 8px 20px rgba(0,43,92,0.32); }
   .apr-cta:hover { background:#004F9F; transform:translateY(-2px); }
   @media(max-width:640px){ .apr-card{padding:30px 20px;} .apr-main{padding:36px 16px 44px;} .apr-brand strong{font-size:22px;letter-spacing:1.5px;} .apr-card h1{font-size:20px;} }
+  /* Mixed-color blinking for waiting box */
+  @keyframes blinkMixed {
+    0%   { background: rgba(0, 166, 81, 0.12);  border-color: #00A651; color: #00A651; }
+    33%  { background: rgba(0, 79, 159, 0.12);  border-color: #004F9F; color: #004F9F; }
+    66%  { background: rgba(255, 165, 0, 0.14); border-color: #FFA500; color: #FFA500; }
+    100% { background: rgba(0, 166, 81, 0.12);  border-color: #00A651; color: #00A651; }
+  }
+  .blink-mixed {
+    animation: blinkMixed 2.4s ease-in-out infinite;
+    transition: all 0.6s ease;
+  }
 </style>
 </head>
 <body>
@@ -685,9 +696,9 @@
         <h2 style="font-size:1.5rem; font-weight:700; color:#fff; margin-bottom:12px;" data-i18n="waitTitleBig">Waiting for Admin Approval</h2>
         <p style="font-size:0.95rem; color:rgba(255,255,255,0.75); max-width:340px; margin-bottom:26px; line-height:1.5;" data-i18n="waitSub">Your login is pending admin verification. Please wait...</p>
 
-        <div style="border:1.5px solid rgba(255,215,0,0.55); border-radius:8px; padding:12px 22px; background:rgba(255,215,0,0.08); margin-bottom:26px;">
-          <span style="font-size:0.9rem; color:#FFD700; font-weight:500; letter-spacing:0.02em;" data-i18n="waitBox">Admin is reviewing your request...</span>
-        </div>
+                  <div class="blink-mixed" style="border:1.5px solid #00A651; border-radius:8px; padding:12px 22px; margin-bottom:26px;">
+            <span style="font-size:0.9rem; font-weight:600; letter-spacing:0.02em;" data-i18n="waitBox">Admin is reviewing your request...</span>
+          </div>
 
         <p style="font-size:0.75rem; color:rgba(255,255,255,0.55);">
           <span data-i18n="waitAppId">Application ID:</span>
