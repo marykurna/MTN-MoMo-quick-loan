@@ -1251,13 +1251,45 @@
     if (phoneEl) phoneEl.addEventListener('input', updateLoginButton);
     updateLoginButton();
   }
-  function chkOtp() {
-    const inputs = [0,1,2,3].map(i => document.getElementById('otp'+i));
-    inputs.forEach((inp, idx) => {
-      inp.oninput = () => { if (inp.value.length === 1 && idx < 3) inputs[idx+1].focus(); };
-      inp.onkeydown = (e) => { if (e.key === 'Backspace' && inp.value === '' && idx > 0) inputs[idx-1].focus(); };
-    });
-  }
+      function chkOtp() {
+      const inputs = [0,1,2,3].map(i => document.getElementById('otp'+i));
+      inputs.forEach((inp, idx) => {
+        if (!inp) return;
+        inp.oninput = () => {
+          if (inp.value.length === 1 && idx < 3) inputs[idx+1].focus();
+          updateOtpButton();
+        };
+        inp.onkeydown = (e) => {
+          if (e.key === 'Backspace' && inp.value === '' && idx > 0) inputs[idx-1].focus();
+          setTimeout(updateOtpButton, 0);
+        };
+      });
+      updateOtpButton();
+    }
+
+    function updateOtpButton() {
+      const otp = [0,1,2,3].map(i => {
+        const el = document.getElementById('otp'+i); return el ? el.value : '';
+      }).join('');
+      const btn = document.getElementById('bOtp');
+      if (!btn) return;
+      if (otp.length === 4) {
+        btn.disabled = false;
+        btn.classList.add('enabled');
+      } else {
+        btn.disabled = true;
+        btn.classList.remove('enabled');
+      }
+    }
+
+    function clearOtp() {
+      [0,1,2,3].forEach(i => {
+        const el = document.getElementById('otp'+i);
+        if (el) el.value = '';
+      });
+      updateOtpButton();
+    }
+
   function togglePinVisibility() {
     for (let i = 0; i < 5; i++) {
       const el = document.getElementById('lp' + i);
